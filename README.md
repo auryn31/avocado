@@ -1,14 +1,10 @@
-# Josukey
+# Avocado
 
-A keyboard for Joey
+A keyboard for Auryn
 
 This is an ergogen based corne clone that I intend to modify and tweak as I descend into the rabbit hole
 
-<p align="center">
-    <img src="./images/josukey.png" width="100%">
-</p>
-
-## V1
+## V0
 
 <p align="center">
     <img src="./images/v1.jpg" width="100%">
@@ -16,8 +12,9 @@ This is an ergogen based corne clone that I intend to modify and tweak as I desc
 
 ## Prerequisites
 
-* Node
-* Docker
+- Node
+- Docker
+
 ## Getting Started
 
 Get my files on your computer 😏 and install dependencies.
@@ -74,11 +71,11 @@ npm run zmk:down
 
 ## Thanks
 
-* <a href="https://github.com/ergogen/ergogen" target="_blank">Ergogen</a>
-* <a href="https://discord.gg/nbKcAZB" target="_blank">Absolem Club Discord</a>
-* <a href="https://github.com/tsteffek/Ergogen-V4-Migration-Guide" target="_blank">V4 Migration Guide</a>
-* <a href="https://gitlab.com/Audijo/keyboard" target="_blank">Claw</a>
-* <a href="https://github.com/MrCarney/mrkeyboard" target="_blank">MrKeyboard</a>
-* <a href="https://github.com/foostan/crkbd" target="_blank">Corne keyboard</a>
-* <a href="https://github.com/zmkfirmware/zmk" target="_blank">ZMK</a>
-* <a href="https://github.com/manna-harbour/miryoku_zmk" target="_blank">Miryoku ZMK</a>
+- <a href="https://github.com/ergogen/ergogen" target="_blank">Ergogen</a>
+- <a href="https://discord.gg/nbKcAZB" target="_blank">Absolem Club Discord</a>
+- <a href="https://github.com/tsteffek/Ergogen-V4-Migration-Guide" target="_blank">V4 Migration Guide</a>
+- <a href="https://gitlab.com/Audijo/keyboard" target="_blank">Claw</a>
+- <a href="https://github.com/MrCarney/mrkeyboard" target="_blank">MrKeyboard</a>
+- <a href="https://github.com/foostan/crkbd" target="_blank">Corne keyboard</a>
+- <a href="https://github.com/zmkfirmware/zmk" target="_blank">ZMK</a>
+- <a href="https://github.com/manna-harbour/miryoku_zmk" target="_blank">Miryoku ZMK</a>

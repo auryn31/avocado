@@ -1,3 +1,7 @@
+meta:
+  engine: 4.1.0
+  version: 0.0.1
+  author: auryn
 points:
     key.padding: cy
     zones:
@@ -11,100 +15,46 @@ points:
                     key:
                         col_net: P7
                         spread: cx
-                    rows:
-                        bottom:
-                            led_in: "rgb_{{name}}"
-                            led_out: rgb_main_pinky_home
-                        home:
-                            led_in: "rgb_{{name}}"
-                            led_out: rgb_main_pinky_top
-                        top:
-                            led_in: "rgb_{{name}}"
                 ring:
                     key:
                         col_net: P6
-                        stagger: 4
+                        stagger: 0.4 cy
                         spread: cx
-                    rows:
-                        bottom:
-                            led_in: "rgb_{{name}}"
-                            led_out: rgb_main_pinky_bottom
-                        home:
-                            led_in: "rgb_{{name}}"
-                            led_out: rgb_main_ring_bottom
-                        top:
-                            led_in: "rgb_{{name}}"
-                            led_out: rgb_main_ring_home
                 middle:
                     key:
                         col_net: P5
-                        stagger: 2
+                        stagger: 0.28 cy
                         spread: cx
-                    rows:
-                        bottom:
-                            led_in: "rgb_{{name}}"
-                            led_out: rgb_main_middle_home
-                        home:
-                            led_in: "rgb_{{name}}"
-                            led_out: rgb_main_middle_top
-                        top:
-                            led_in: "rgb_{{name}}"
-                            led_out: rgb_main_ring_top
                 index:
                     key:
                         col_net: P4
-                        stagger: -2
+                        stagger: -0.33 cy
                         spread: cx
-                    rows:
-                        bottom:
-                            led_in: "rgb_{{name}}"
-                            led_out: rgb_thumb_home_home
-                        home:
-                            led_in: "rgb_{{name}}"
-                            led_out: rgb_main_index_bottom
-                        top:
-                            led_in: "rgb_{{name}}"
-                            led_out: rgb_main_index_home
                 inner:
                     key:
                         col_net: P3
-                        stagger: -2
+                        stagger: -0.11 cy 
                         spread: cx
-                    rows:
-                        bottom:
-                            led_in: "rgb_{{name}}"
-                            led_out: rgb_main_inner_home
-                        home:
-                            led_in: "rgb_{{name}}"
-                            led_out: rgb_main_inner_top
-                        top:
-                            led_in: "rgb_{{name}}"
-                            led_out: rgb_main_index_top
         thumb:
             anchor:
-                ref: main_index_bottom
-                shift: [-0.5cx, -cy]
+                ref: main_inner_bottom
+                shift: [-1 cx, -1.15 cy]
             rows.home.row_net: P8
             columns:
                 inner.key:
+                    origin: [-1 cx, -1.15 cy]
                     col_net: P5
-                    led_in: "rgb_{{name}}"
-                    led_out: rgb_main_middle_bottom
                     spread: cx
                 home.key:
                     col_net: P4
-                    led_in: "rgb_{{name}}"
-                    led_out: rgb_thumb_inner_home
-                    spread: cx + 2
-                    rotate: -18
-                    stagger: -3.2
+                    splay: -0.5 cy
+                    origin: [-0.5 cx, -0.15 cy]
+                    spread: 1.2 cx
                 outer.key:
                     col_net: P3
-                    led_in: P9
-                    led_out: rgb_main_inner_bottom
-                    spread: cx
-                    rotate: -36
-                    stagger: -9.2
+                    spread: 1.2 cx
+                    splay: -0.5 cy 
+                    origin: [-0.8 cx, -0.15 cy]
 outlines:
     _board_outline:
         -   what: polygon
@@ -178,7 +128,7 @@ outlines:
         -   what: outline
             name: _keycap_outlines
             operation: stack
-cases.josukey:
+cases.avocado:
     -   what: outline
         name: _board_outline
         extrude: 3
@@ -187,22 +137,13 @@ cases.josukey:
         name: _keycap_outlines
         extrude: 6
         operation: add
-pcbs.josukey:
+pcbs.avocado:
     outlines:
         main.outline: _board_outline
         keycaps:
             outline: _keycap_outlines
             layer: Eco1.User
     footprints:
-        led:
-            what: sk6812mini
-            where: true
-            adjust:
-                shift: [0, -5]
-            params:
-                din: "{{led_in}}"
-                dout: "{{led_out}}"
-                cutout: true
         diode:
             what: sod-123w
             where: true
@@ -222,16 +163,19 @@ pcbs.josukey:
                 from: "{{col_net}}"
                 to: "{{name}}"
         promicro:
-            what: promicro_pretty
+            what: pro_micro_pretty
             where:
-                ref: main_inner_home
-            adjust:
+                ref: 
+                  - main_inner_home
                 shift: [22, 6.5]
-                rotate: -90
+            params:
+              reversable_pins: 12
+                # rotate: -90
         jst-s2b-ph-kl:
             what: jst-s2b-ph-kl
             where:
-                ref: main_inner_bottom
+                ref:
+                  - main_inner_bottom
                 shift: [21, -2]
                 rotate: 180
             params:
@@ -239,7 +183,8 @@ pcbs.josukey:
         pcm12:
             what: pcm12
             where:
-                ref: main_inner_bottom
+                ref: 
+                  - main_inner_bottom
                 shift: [30.5, 3]
                 rotate: 90
             params:
@@ -248,7 +193,8 @@ pcbs.josukey:
         wuerth-434121025816:
             what: wuerth-434121025816
             where:
-                ref: main_inner_bottom
+                ref: 
+                  - main_inner_bottom
                 shift: [30, -6]
                 rotate: 90
             params:
@@ -257,10 +203,11 @@ pcbs.josukey:
         front_text: &text
             what: text
             where: &textWhere
-                ref: main_pinky_bottom
+                ref: 
+                  - main_pinky_bottom
                 shift: [12, -7]
             params: &textParams
-                text: Josukey\nA keyboard for Joey
+                text: Avocado\nA keyboard from Auryn
                 justify: left
         back_text:
             <<: *text
@@ -271,39 +218,8 @@ pcbs.josukey:
                 <<: *textParams
                 layer: B.SilkS
                 justify: left mirror
-        safeText:
-            <<: *text
-            what: keepout
-            params:
-                points:
-                    -   x: -0.5
-                        y: -2
-                    -   x: 15.5
-                        y: -2
-                    -   x: 15.5
-                        y: 2
-                    -   x: -0.5
-                        y: 2
-        peace: &icon
-            what: peace
-            where:
-                ref: main_inner_bottom
-                shift: [13, -6]
-            params:
-                scale: 2
         love:
-            <<: *icon
+            where:
+              ref: main_inner_bottom
+              shift: [0, 0]
             what: love
-        safeIcon:
-            <<: *icon
-            what: keepout
-            params:
-                points:
-                    -   x: -0.5
-                        y: -0.5
-                    -   x: 13.25
-                        y: -0.5
-                    -   x: 13.25
-                        y: 13.25
-                    -   x: -0.5
-                        y: 13.25
