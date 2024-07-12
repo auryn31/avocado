@@ -1,27 +1,28 @@
 {
-    "name": "josukey",
-    "description": "A keyboard for Joey",
-    "version": "0.0.2",
-    "author": "Joey <joe@joey.codes>",
-    "license": "MIT",
-    "private": true,
-    "homepage": "https://github.com/Narkoleptika/josukey",
-    "repository": "github:Narkoleptika/josukey",
-    "bugs": "https://github.com/Narkoleptika/josukey/issues",
+  "name": "josukey",
+  "description": "A keyboard for Joey",
+  "version": "0.0.2",
+  "author": "Joey <joe@joey.codes>",
+  "license": "MIT",
+  "private": true,
+  "homepage": "https://github.com/Narkoleptika/josukey",
+  "repository": "github:Narkoleptika/josukey",
+  "bugs": "https://github.com/Narkoleptika/josukey/issues",
   "type": "module",
-    "scripts": {
-        "ergogen:build": "ergogen --clean -o ergogen/output ergogen",
-        "ergogen:watch": "nodemon --ext .js,.yaml --watch ergogen/footprints --watch ergogen/config.yaml --exec npm run ergogen:build",
-        "zmk:update": "docker compose -f zmk/docker-compose.yml run --rm firmware-env zmk-update",
-        "zmk:build": "docker compose -f zmk/docker-compose.yml run --rm firmware-env zmk-build",
-        "zmk:down": "docker compose -f zmk/docker-compose.yml down",
-        "run:svg": "node node_modules/svg-path-interpolator/bin/svgpi.mjs ./svg_converter/config.json ./ergogen/images/avocado1.svg ./svg_converter/avocado1.json"
-    },
-    "dependencies": {
-        "ergogen": "^4.1.0"
-    },
-    "devDependencies": {
-        "nodemon": "^2.0.21",
-        "svg-path-interpolator": "^0.3.0"
-    }
+  "scripts": {
+    "ergogen:build": "ergogen --clean -o ergogen/output ergogen",
+    "ergogen:watch": "nodemon --ext .js,.yaml --watch ergogen/footprints --watch ergogen/config.yaml --exec npm run ergogen:build",
+    "zmk:update": "docker compose -f zmk/docker-compose.yml run --rm firmware-env zmk-update",
+    "zmk:build": "docker compose -f zmk/docker-compose.yml run --rm firmware-env zmk-build",
+    "zmk:down": "docker compose -f zmk/docker-compose.yml down",
+    "run:svg": "node node_modules/svg-path-interpolator/bin/svgpi.mjs ./svg_converter/config.json ./ergogen/images/avocado.svg ./svg_converter/avocado.json"
+  },
+  "dependencies": {
+    "ergogen": "^4.1.0",
+    "fs": "^0.0.1-security"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.21",
+    "svg-path-interpolator": "^0.3.0"
+  }
 }

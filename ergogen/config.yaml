@@ -2,8 +2,15 @@ meta:
   engine: 4.1.0
   version: 0.0.1
   author: auryn
+
+units: 
+  kx: u
+  ky: u
+  px: u + 2
+  py: u + 2
+
 points:
-    key.padding: cy
+    key.padding: ky
     zones:
         main:
             rows:
@@ -14,113 +21,113 @@ points:
                 pinky:
                     key:
                         col_net: P7
-                        spread: cx
+                        spread: kx
                 ring:
                     key:
                         col_net: P6
-                        stagger: 0.4 cy
-                        spread: cx
+                        stagger: 0.4 ky
+                        spread: kx
                 middle:
                     key:
                         col_net: P5
-                        stagger: 0.28 cy
-                        spread: cx
+                        stagger: 0.28 ky
+                        spread: kx
                 index:
                     key:
                         col_net: P4
-                        stagger: -0.33 cy
-                        spread: cx
+                        stagger: -0.33 ky
+                        spread: kx
                 inner:
                     key:
                         col_net: P3
-                        stagger: -0.11 cy 
-                        spread: cx
+                        stagger: -0.11 ky 
+                        spread: kx
         thumb:
             anchor:
                 ref: main_inner_bottom
-                shift: [-1 cx, -1.15 cy]
+                shift: [-1 kx, -1.15 ky]
             rows.home.row_net: P8
             columns:
                 inner.key:
-                    origin: [-1 cx, -1.15 cy]
+                    origin: [-1 kx, -1.15 ky]
                     col_net: P5
-                    spread: cx
+                    spread: kx
                 home.key:
                     col_net: P4
-                    splay: -0.5 cy
-                    origin: [-0.5 cx, -0.15 cy]
-                    spread: 1.2 cx
+                    splay: -0.5 ky
+                    origin: [-0.5 kx, -0.15 ky]
+                    spread: 1.2 kx
                 outer.key:
                     col_net: P3
-                    spread: 1.2 cx
-                    splay: -0.5 cy 
-                    origin: [-0.8 cx, -0.15 cy]
+                    spread: 1.2 kx
+                    splay: -0.5 ky 
+                    origin: [-0.8 kx, -0.15 ky]
 outlines:
     _board_outline:
         -   what: polygon
             fillet: 2
             points:
                 -   ref: thumb_outer_home
-                    shift: [0.6cx, 0.6cy]
+                    shift: [0.6kx, 0.6ky]
                 -   ref: thumb_outer_home
-                    shift: [0.6cx, -0.6cy]
+                    shift: [0.6kx, -0.6ky]
                 -   ref: thumb_outer_home
-                    shift: [-0.4cx, -0.6cy]
+                    shift: [-0.4kx, -0.6ky]
 
                 -   ref: thumb_home_home
-                    shift: [0.4cx, -0.6cy]
+                    shift: [0.4kx, -0.6ky]
                 -   ref: thumb_home_home
-                    shift: [-0.4cx, -0.6cy]
+                    shift: [-0.4kx, -0.6ky]
 
                 -   ref: thumb_inner_home
-                    shift: [0.4cx, -0.6cy]
+                    shift: [0.4kx, -0.6ky]
                 -   ref: thumb_inner_home
-                    shift: [-0.6cx, -0.6cy]
+                    shift: [-0.6kx, -0.6ky]
 
                 -   ref: main_pinky_bottom
-                    shift: [1.6cx, -0.6cy]
+                    shift: [1.6kx, -0.6ky]
                 -   ref: main_pinky_bottom
-                    shift: [0.6cx, -0.6cy]
+                    shift: [0.6kx, -0.6ky]
                 -   ref: main_pinky_bottom
-                    shift: [-0.6cx, -0.6cy]
+                    shift: [-0.6kx, -0.6ky]
 
                 -   ref: main_pinky_top
-                    shift: [-0.6cx, 0.6cy]
+                    shift: [-0.6kx, 0.6ky]
                 -   ref: main_pinky_top
-                    shift: [0.4cx, 0.6cy]
+                    shift: [0.4kx, 0.6ky]
 
                 -   ref: main_ring_top
-                    shift: [-0.5cx, 0.6cy]
+                    shift: [-0.6kx, 0.6ky]
                 -   ref: main_ring_top
-                    shift: [0.4cx, 0.6cy]
+                    shift: [0.4kx, 0.6ky]
 
                 -   ref: main_middle_top
-                    shift: [-0.4cx, 0.61cy]
+                    shift: [-0.6kx, 0.6ky]
                 -   ref: main_middle_top
-                    shift: [0.4cx, 0.6cy]
+                    shift: [0.6kx, 0.6ky]
 
                 -   ref: main_index_top
-                    shift: [-0.4cx, 0.6cy]
+                    shift: [-0.4kx, 0.6ky]
                 -   ref: main_index_top
-                    shift: [0.5cx, 0.6cy]
+                    shift: [0.5kx, 0.6ky]
 
                 -   ref: main_inner_top
-                    shift: [-0.4cx, 0.6cy]
+                    shift: [-0.4kx, 0.6ky]
                 -   ref: main_inner_top
-                    shift: [0.5cx, 0.6cy]
+                    shift: [0.5kx, 0.6ky]
 
                 -   ref: main_inner_top
-                    shift: [0.6cx, 0.4cy]
+                    shift: [0.6kx, 0.4ky]
                 -   ref: main_inner_top
-                    shift: [1.8cx, 0.4cy]
+                    shift: [1.8kx, 0.4ky]
 
                 -   ref: main_inner_bottom
-                    shift: [1.8cx, -0.6cy]
+                    shift: [1.8kx, -0.6ky]
     _keycap_outlines:
         -   what: rectangle
             fillet: 2
             where: true
-            size: [1cx - 0.5, 1cy - 0.5] # Choc keycaps are 17.5 x 16.5
+            size: [1kx , 1ky ] # Choc keycaps are 17.5 x 16.5
     preview:
         -   what: outline
             name: _board_outline
@@ -148,22 +155,22 @@ pcbs.avocado:
             what: sod-123w
             where: true
             params:
-                from: "{{name}}"
+                from: "{{row_net}}"
                 to: "{{row_net}}"
             adjust:
                 shift: [ -7.6, -1.6 ]
                 rotate: 90
-        choc:
-            what: choc
+        mx:
+            what: mx
             where: true
             params:
                 keycaps: true
                 reverse: true
                 hotswap: true
                 from: "{{col_net}}"
-                to: "{{name}}"
+                to: "{{row_net}}"
         promicro:
-            what: pro_micro_pretty
+            what: promicro_pretty
             where:
                 ref: 
                   - main_inner_home
@@ -218,8 +225,8 @@ pcbs.avocado:
                 <<: *textParams
                 layer: B.SilkS
                 justify: left mirror
-        love:
-            where:
-              ref: main_inner_bottom
-              shift: [0, 0]
-            what: love
+        avocado:
+           where:
+             ref: main_middle_bottom
+             shift: [-5, -15]
+           what: avocado
