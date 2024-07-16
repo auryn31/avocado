@@ -3,11 +3,6 @@ module.exports = {
     scale: 0.01,
   },
   body: (params) => {
-    function* chunker(arr, n) {
-      for (let i = 0; i < arr.length; i += n) {
-        yield arr.slice(i, i + n);
-      }
-    }
     const allPoints = [
       [
         [197.99413991032634, 113.00440025189891],
@@ -1715,6 +1710,14 @@ module.exports = {
             (gr_poly
                 (pts${p})
                 (stroke (width 0) (type solid)) (fill none) (layer "B.Cu")
+            )
+            (gr_poly
+                (pts${p})
+                (stroke (width 0) (type solid)) (fill none) (layer "F.Mask")
+            )
+            (gr_poly
+                (pts${p})
+                (stroke (width 0) (type solid)) (fill none) (layer "F.Cu")
             )`;
       })
       .join("\n");

@@ -8,6 +8,8 @@ units:
   ky: u
   px: u + 2
   py: u + 2
+  kcow: 14
+  kcoh: 14
 
 points:
     key.padding: ky
@@ -62,7 +64,50 @@ points:
                     spread: 1.2 kx
                     splay: -0.5 ky 
                     origin: [-0.8 kx, -0.15 ky]
+        mountscrew_top_left:
+          anchor:
+            ref.aggregate.parts:
+              [main_pinky_top, main_ring_top, main_ring_home]
+            shift: [-2.5, -0.5]
+          columns.screw.key.tags: [screw]
+        mountscrew_bottom_left:
+          anchor:
+            ref.aggregate.parts:
+              [main_pinky_home, main_ring_home, main_ring_bottom]
+            shift: [-2.5, -0.5]
+          columns.screw.key.tags: [screw]
+        mountscrew_top_right:
+          anchor:
+            ref.aggregate.parts:
+              [main_index_top, main_index_home, main_inner_top, main_inner_home]
+            shift: [0, 0]
+          columns.screw.key.tags: [screw]
+        mountscrew_bottom_right:
+          anchor:
+            ref.aggregate.parts:
+              [main_index_home, main_index_bottom, main_inner_home, main_inner_bottom]
+            shift: [0, 0]
+          columns.screw.key.tags: [screw]
+        mountscrew_right_right:
+          anchor:
+            ref.aggregate.parts:
+              [thumb_home_home, thumb_outer_home]
+            shift: [0, 0]
+          columns.screw.key.tags: [screw]
 outlines:
+    _base: 
+        - what: rectangle
+          bound: true
+          where: 
+            - /main/
+            - /thumb/
+          size: [cx, cy]
+    _switch_cutouts:
+      - what: rectangle
+        where: 
+          - /main/
+          - /thumb/
+        size: [kcow, kcoh]
     _board_outline:
         -   what: polygon
             fillet: 2
@@ -126,8 +171,39 @@ outlines:
     _keycap_outlines:
         -   what: rectangle
             fillet: 2
-            where: true
+            where: 
+              - /main/
+              - /thumb/
             size: [1kx , 1ky ] # Choc keycaps are 17.5 x 16.5
+    _board_plate:
+        - what: outline
+          name: _base
+        - what: polygon
+          operation: add
+          points:
+            - ref: main_index_bottom 
+              shift: [-0.5 cx, 0]
+            - ref: thumb_inner_home
+              shift: [-0.5 cx, -0.5 cy]
+            - ref: thumb_home_home
+              shift: [0.5 cx, -0.5 cy]
+            - ref: thumb_outer_home
+              shift: [0.5 cx, -0.5 cy]
+            - ref: thumb_outer_home
+              shift: [0.5 cx, 0.5 cy]
+            - ref: thumb_home_home
+              shift: [0.25 cx, 0.5 cy]
+            - ref: main_inner_bottom
+              shift: [0.5 cx, 0]
+        - what: outline
+          name: _board_plate
+          expand: 2
+        - what: outline
+          name: _switch_cutouts
+          operation: subtract
+    plate:
+      - what: outline
+        name: _board_plate
     preview:
         -   what: outline
             name: _board_outline
@@ -144,7 +220,64 @@ cases.avocado:
         name: _keycap_outlines
         extrude: 6
         operation: add
-pcbs.avocado:
+pcbs:
+  plate:
+    outlines:
+      main.outline: plate
+    footprints:
+      screws:
+        what: mounting_hole
+        params:
+          drill: 4.3
+          outline: 0.4
+        where: [screw]
+      front_text: &text
+          what: text
+          where: &textWhere
+              ref: 
+                - main_index_bottom
+              shift: [-7, -0.6 cx]
+          params: &textParams
+              text: MX Switch Plate
+              justify: left
+      back_text:
+          <<: *text
+          where:
+              <<: *textWhere
+              shift: [7, -0.6 cx]
+          params:
+              <<: *textParams
+              layer: B.SilkS
+              justify: left mirror
+      
+  bottom:
+    outlines:
+      main.outline: _board_outline
+    footprints:
+      screws:
+        what: mounting_hole
+        params:
+        where: [screw]
+      front_text: &text
+          what: text
+          where: &textWhere
+              ref: 
+                - main_pinky_bottom
+              shift: [-7, -0.6 cx]
+          params: &textParams
+              text: Avocado
+              justify: left
+      back_text:
+          <<: *text
+          where:
+              <<: *textWhere
+              shift: [0, -0.6 cx]
+          params:
+              <<: *textParams
+              layer: B.SilkS
+              justify: left mirror
+      
+  avocado:
     outlines:
         main.outline: _board_outline
         keycaps:
@@ -153,7 +286,9 @@ pcbs.avocado:
     footprints:
         diode:
             what: sod-123w
-            where: true
+            where:
+              - /main/
+              - /thumb/
             params:
                 from: "{{row_net}}"
                 to: "{{row_net}}"
@@ -162,11 +297,13 @@ pcbs.avocado:
                 rotate: 90
         mx:
             what: mx
-            where: true
+            where: 
+              - /main/
+              - /thumb/
             params:
                 keycaps: true
                 reverse: true
-                hotswap: true
+                hotswap: false
                 from: "{{col_net}}"
                 to: "{{row_net}}"
         promicro:
@@ -178,7 +315,7 @@ pcbs.avocado:
             params:
               reversable_pins: 12
                 # rotate: -90
-        jst-s2b-ph-kl:
+        battery_connector:
             what: jst-s2b-ph-kl
             where:
                 ref:
@@ -186,8 +323,9 @@ pcbs.avocado:
                 shift: [21, -2]
                 rotate: 180
             params:
-                neg: GND
-        pcm12:
+                neg: B-
+                pos: pos
+        on_off_switch:
             what: pcm12
             where:
                 ref: 
@@ -196,7 +334,7 @@ pcbs.avocado:
                 rotate: 90
             params:
                 from: pos
-                to: RAW
+                to: B+
         wuerth-434121025816:
             what: wuerth-434121025816
             where:
@@ -225,8 +363,12 @@ pcbs.avocado:
                 <<: *textParams
                 layer: B.SilkS
                 justify: left mirror
-        avocado:
+        avocado_image:
            where:
              ref: main_middle_bottom
              shift: [-5, -15]
            what: avocado
+        screws:
+          what: mounting_hole
+          params:
+          where: [screw]
