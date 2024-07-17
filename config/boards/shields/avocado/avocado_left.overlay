@@ -1,4 +1,4 @@
-#include "josukey.dtsi"
+#include "avocado.dtsi"
 
 &default_kscan {
     col-gpios = <&pro_micro 7 GPIO_ACTIVE_HIGH>,
