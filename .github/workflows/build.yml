@@ -21,7 +21,6 @@
 #       config_path: "zmk/config"
 #       archive_name: "avocado_firmware"
 
-
 name: Reusable user config build
 
 on:
