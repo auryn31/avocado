@@ -1,3 +1,86 @@
-#include "./miryoku_conf.h"
-#include "/miryoku_zmk/miryoku/mapping/36/minidox.h"
-#include "/miryoku_zmk/miryoku/miryoku.dtsi"
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/bt.h>
+
+// The default keymap is roughly on Miryoku layout
+// (https://github.com/manna-harbour/miryoku).
+// Customize on your own on the config folder.
+
+#define BASE    0
+#define NAV     1
+#define SYM     2
+#define NUM     3
+#define FUN     4
+#define MED     5
+
+/ {
+    behaviors {
+        hm: homerow_mods {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOMEROW_MODS";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            quick-tap-ms = <0>;
+            flavor = "tap-preferred";
+            bindings = <&kp>, <&kp>;
+        };
+    };
+
+    keymap {
+        compatible = "zmk,keymap";
+
+        default_layer {
+            bindings = <
+    &kp Q       &kp W       &kp E       &kp R       &kp T                                   &kp Y           &kp U       &kp I       &kp O           &kp P
+    &hm LGUI A  &hm LALT S  &hm LCTRL D &hm LSHFT F &kp G                                   &kp H           &hm LSHFT J &hm LCTRL K &hm LALT L      &hm LGUI SEMI
+    &kp Z       &hm RALT X  &kp C       &kp V       &kp B                                   &kp N           &kp M       &kp COMMA   &hm RALT DOT    &kp FSLH
+                                        &lt MED ESC &lt NAV SPACE   &kp TAB     &lt SYM RET &lt NUM BSPC    &lt FUN DEL
+            >;
+        };
+
+        nav_layer {
+            bindings = <
+    &none       &none       &none       &none       &none                           &kp LC(Y)   &kp LC(V)   &kp LC(C)   &kp LC(X)   &kp LC(Z)
+    &kp LGUI    &kp LALT    &kp LCTRL   &kp LSHFT   &none                           &kp LEFT    &kp DOWN    &kp UP    &kp RIGHT      &kp CAPS
+    &none       &none       &none       &none       &none                           &kp INS     &kp HOME    &kp PG_DN   &kp PG_UP   &kp END
+                                        &none       &trans  &none       &kp RET     &kp BSPC    &kp DEL     
+            >;
+        };
+
+        sym_layer {
+            bindings = <
+    &kp LBRC    &kp AMPS    &kp STAR    &kp LPAR   &kp RBRC                     &none       &none       &none       &none       &none
+    &kp COLON   &kp DLLR    &kp PRCNT   &kp CARET  &kp PLUS                     &none       &kp RSHFT   &kp RCTRL   &kp RALT    &kp RGUI
+    &kp TILDE   &kp EXCL    &kp AT      &kp HASH   &kp PIPE                     &none       &none       &none       &none       &none
+                                        &kp LPAR   &kp RPAR &kp UNDER   &trans  &none       &none
+            >;
+        };
+
+        num_layer {
+            bindings = <
+    &kp LBKT    &kp N7  &kp N8  &kp N9  &kp RBKT                        &none   &none       &none       &none       &none
+    &kp SQT     &kp N4  &kp N5  &kp N6  &kp EQUAL                       &none   &kp RSHFT   &kp RCTRL   &kp RALT    &kp RGUI
+    &kp GRAVE   &kp N1  &kp N2  &kp N3  &kp BSLH                        &none   &none       &none       &none       &none
+                                &kp DOT &kp N0      &kp MINUS   &none   &trans  &none
+            >;
+        };
+
+        fun_layer {
+            bindings = <
+    &kp F12 &kp F7  &kp F8  &kp F9      &kp PSCRN                           &none   &none       &none       &none       &none
+    &kp F11 &kp F4  &kp F5  &kp F6      &kp SLCK                            &none   &kp RSHFT   &kp RCTRL   &kp RALT    &kp RGUI
+    &kp F10 &kp F1  &kp F2  &kp F3      &kp PAUSE_BREAK                     &none   &none       &none       &none       &none
+                            &kp K_APP   &kp SPACE       &kp TAB     &none   &none   &trans
+            >;
+        };
+
+        media_layer {
+            bindings = <
+    &none       &none       &none       &none       &none                           &none       &none         &none         &none           &none
+    &kp LGUI    &kp LALT    &kp LCTRL   &kp LSHFT   &none                           &none       &kp C_PREV    &kp C_VOL_DN  &kp C_VOL_UP    &kp C_NEXT
+    &none       &none       &none       &none       &none                           &none       &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2    &bt BT_SEL 3     
+                                        &trans      &none   &none       &kp C_STOP  &kp C_PP    &kp C_MUTE     
+            >;
+        };
+    };
+};
