@@ -1,22 +1,9 @@
 on: [push, pull_request, workflow_dispatch]
-  # workflow_call:
-  #   inputs:
-  #     build_matrix_path:
-  #       description: "Path to the build matrix file"
-  #       default: "build.yaml"
-  #       required: false
-  #       type: string
-  #     config_path:
-  #       description: "Path to the config directory"
-  #       default: "config"
-  #       required: false
-  #       type: string
-
 
 jobs:
   build:
     uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
-    with:
-      # build_matrix_path: "zmk/build.yaml"
-      # config_path: "zmk/config"
-      archive_name: "avocado_firmware"
+    # with:
+    #   # build_matrix_path: "zmk/build.yaml"
+    #   # config_path: "zmk/config"
+    #   archive_name: "avocado_firmware"
