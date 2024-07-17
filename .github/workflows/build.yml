@@ -1,7 +1,7 @@
 on: [push, pull_request, workflow_dispatch]
 
-env:
-  build_matrix: zmk/build.yaml
+# env:
+#   build_matrix: zmk/build.yaml
 
 jobs:
   build:
