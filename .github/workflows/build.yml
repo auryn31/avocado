@@ -1,12 +1,9 @@
 on: [push, pull_request, workflow_dispatch]
 
-env:
-  base_dir: zmk
-
 jobs:
   build:
     uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
     with:
       build_matrix_path: "zmk/build.yaml"
-      # config_path: "config"
+      config_path: "zmk/config"
       archive_name: "avocado_firmware"
