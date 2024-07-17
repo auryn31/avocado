@@ -23,29 +23,29 @@
 
 name: Reusable user config build
 
-on:
-  workflow_call:
-    inputs:
-      build_matrix_path:
-        description: "Path to the build matrix file"
-        default: "build.yaml"
-        required: false
-        type: string
-      config_path:
-        description: "Path to the config directory"
-        default: "config"
-        required: false
-        type: string
-      fallback_binary:
-        description: "Fallback binary format, if no *.uf2 file was built"
-        default: "bin"
-        required: false
-        type: string
-      archive_name:
-        description: "Archive output file name"
-        default: "firmware"
-        required: false
-        type: string
+on: [push]
+  # workflow_call:
+  #   inputs:
+  #     build_matrix_path:
+  #       description: "Path to the build matrix file"
+  #       default: "build.yaml"
+  #       required: false
+  #       type: string
+  #     config_path:
+  #       description: "Path to the config directory"
+  #       default: "config"
+  #       required: false
+  #       type: string
+  #     fallback_binary:
+  #       description: "Fallback binary format, if no *.uf2 file was built"
+  #       default: "bin"
+  #       required: false
+  #       type: string
+  #     archive_name:
+  #       description: "Archive output file name"
+  #       default: "firmware"
+  #       required: false
+  #       type: string
 
 jobs:
   matrix:
