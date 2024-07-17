@@ -1,0 +1,5 @@
+include:
+  - board: nice_nano_v2
+    shield: avocado_right
+  - board: nice_nano_v2
+    shield: avocado_left

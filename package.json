@@ -14,15 +14,13 @@
     "ergogen:watch": "nodemon --ext .js,.yaml --watch ergogen/footprints --watch ergogen/config.yaml --exec npm run ergogen:build",
     "zmk:update": "docker compose -f zmk/docker-compose.yml run --rm firmware-env zmk-update",
     "zmk:build": "docker compose -f zmk/docker-compose.yml run --rm firmware-env zmk-build",
-    "zmk:down": "docker compose -f zmk/docker-compose.yml down",
-    "run:svg": "node node_modules/svg-path-interpolator/bin/svgpi.mjs ./svg_converter/config.json ./ergogen/images/avocado.svg ./svg_converter/avocado.json"
+    "zmk:down": "docker compose -f zmk/docker-compose.yml down"
   },
   "dependencies": {
     "ergogen": "^4.1.0",
     "fs": "^0.0.1-security"
   },
   "devDependencies": {
-    "nodemon": "^2.0.21",
-    "svg-path-interpolator": "^0.3.0"
+    "nodemon": "^2.0.21"
   }
 }

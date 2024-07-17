@@ -1,14 +1,17 @@
-if SHIELD_JOSUKEY_LEFT
+if SHIELD_AVOCADO_LEFT
 
 config ZMK_KEYBOARD_NAME
-    default "Josukey"
+    default "Avocado"
 
 config ZMK_SPLIT_ROLE_CENTRAL
     default y
 
+config ZMK_USB
+    default y
+
 endif
 
-if SHIELD_JOSUKEY_LEFT || SHIELD_JOSUKEY_RIGHT
+if SHIELD_AVOCADO_LEFT || SHIELD_AVOCADO_RIGHT
 
 config ZMK_SPLIT
     default y

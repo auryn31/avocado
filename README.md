@@ -17,12 +17,10 @@ This is an ergogen based corne clone that I intend to modify and tweak as I desc
 
 ## Getting Started
 
-Get my files on your computer 😏 and install dependencies.
-
 ```bash
-git clone https://github.com/Narkoleptika/josukey.git
-cd josukey
-npm i
+git clone https://github.com/auryn31/avocado
+cd avocado
+yarn
 ```
 
 ## Ergogen
