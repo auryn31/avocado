@@ -22,8 +22,8 @@ on: [push, pull_request, workflow_dispatch]
   #       required: false
   #       type: string
 
-env:
-  base_dir: zmk
+# env:
+#   base_dir: zmk
 
 
 jobs:
@@ -31,4 +31,4 @@ jobs:
     uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
     with:
       build_matrix_path: "zmk/build.yaml"
-      config_path: "zmk/config"
+      config_path: "zmk"
