@@ -4,17 +4,6 @@ A keyboard for Auryn
 
 This is an ergogen based corne clone that I intend to modify and tweak as I descend into the rabbit hole
 
-## V0
-
-<p align="center">
-    <img src="./images/v1.jpg" width="100%">
-</p>
-
-## Prerequisites
-
-- Node
-- Docker
-
 ## Getting Started
 
 ```bash
@@ -43,29 +32,27 @@ npm run ergogen:watch
 
 ## ZMK
 
-### Init
+The code will run by github actions and will be automatically generated their.
+Just download the zip and push it onto your pro micro.
 
-Downloads ZMK dependencies
+## Parts
 
-```bash
-npm run zmk:update
-```
+- [Batteries 301230](https://de.aliexpress.com/item/1005007002754764.html)
+- [Reset Switches](https://de.aliexpress.com/item/32873382894.html)
+- [On/Off Switch](https://de.aliexpress.com/item/4000685483225.html)
+- [Diodes](https://de.aliexpress.com/item/32849879904.html)
+- [Sockets](https://de.aliexpress.com/item/4001122376295.html)
+- [Battery Connector/Adapter/Pins](https://de.aliexpress.com/item/1005004955655144.html)
+- [Nice!Nano Clone](https://de.aliexpress.com/item/1005006446457448.html)
+- [DSA Keycaps](https://de.aliexpress.com/item/1005006005905021.html)
+- [Akko Cream Blue](https://de.aliexpress.com/item/1005006382591392.html)
 
-### Build
+## Video on YouTube
 
-Builds the ZMK firmware
+[Part 1](https://youtu.be/ohu4tZ4qov8)
+[Part 2](https://youtu.be/3RLsh07ZFMo)
 
-```bash
-npm run zmk:build
-```
-
-### Down
-
-Shuts down the ZMK docker services
-
-```bash
-npm run zmk:down
-```
+![keyboard](./images/keyboard.jpeg)
 
 ## Thanks
 
