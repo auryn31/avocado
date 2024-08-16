@@ -67,7 +67,7 @@ module.exports = {
       top_left_pin: { x: -7.62, y: -13.97 },
       top_right_pin: { x: 7.62, y: -13.97 },
       pin_dist: 2.54,
-      total_pin_num: 24,
+      total_pin_num: 26,
       pin_to_male_pad: 2,
       pin_to_female_pad: 2.845,
       pin_to_via: 4.358,
@@ -284,10 +284,10 @@ module.exports = {
 
     /* Instructions about which side the solder should be on. */
     const instructions = `
-        (fp_text user "R. Side - Jumper Here" (at 0 18 ${p.rot}) (layer F.SilkS)
+        (fp_text user "R. Side - Jumper Here" (at 0 19 ${p.rot}) (layer F.SilkS)
           (effects (font (size 1 1) (thickness 0.15)))
         )
-        (fp_text user "L. Side - Jumper Here" (at 0 18 ${p.rot}) (layer B.SilkS)
+        (fp_text user "L. Side - Jumper Here" (at 0 19 ${p.rot}) (layer B.SilkS)
           (effects (font (size 1 1) (thickness 0.15)) (justify mirror))
         )
     `;
@@ -323,22 +323,23 @@ ${get_thru_hole()}
     (descr "Pro Micro footprint")
     (tags "promicro ProMicro")
     
-    (fp_line (start -8.89 15.24)  (end 8.89   15.24) (layer B.SilkS) (width 0.15))
-    (fp_line (start 8.89  15.24)  (end 8.89   -15.24) (layer B.SilkS) (width 0.15))
+    (fp_line (start -8.89 17.78)  (end 8.89   17.78) (layer B.SilkS) (width 0.15))
+    (fp_line (start 8.89  17.78)  (end 8.89   -15.24) (layer B.SilkS) (width 0.15))
     (fp_line (start 8.89  -15.24) (end 3.81   -15.24) (layer B.SilkS) (width 0.15))
     (fp_line (start 3.81  -15.24) (end 3.81   -17.78) (layer B.SilkS) (width 0.15))
     (fp_line (start 3.81  -17.78) (end -3.81  -17.78) (layer B.SilkS) (width 0.15))
     (fp_line (start -3.81 -17.78) (end -3.81  -15.24) (layer B.SilkS) (width 0.15))
     (fp_line (start -3.81 -15.24) (end -8.89  -15.24) (layer B.SilkS) (width 0.15))
-    (fp_line (start -8.89 -15.24) (end -8.89  15.24) (layer B.SilkS) (width 0.15))
-    (fp_line (start 8.89  -15.24) (end 8.89   15.24) (layer F.SilkS) (width 0.15))
+    (fp_line (start -8.89 -15.24) (end -8.89  17.78) (layer B.SilkS) (width 0.15))
+
+    (fp_line (start 8.89  -15.24) (end 8.89   17.78) (layer F.SilkS) (width 0.15))
     (fp_line (start 8.89  -15.24) (end 3.81   -15.24) (layer F.SilkS) (width 0.15))
     (fp_line (start 3.81  -15.24) (end 3.81   -17.78) (layer F.SilkS) (width 0.15))
     (fp_line (start 3.81  -17.78) (end -3.81  -17.78) (layer F.SilkS) (width 0.15))
     (fp_line (start -3.81 -17.78) (end -3.81  -15.24) (layer F.SilkS) (width 0.15))
     (fp_line (start -3.81 -15.24) (end -8.89  -15.24) (layer F.SilkS) (width 0.15))
-    (fp_line (start -8.89 -15.24) (end -8.89  15.24) (layer F.SilkS) (width 0.15))
-    (fp_line (start -8.89 15.24)  (end 8.89   15.24) (layer F.SilkS) (width 0.15))
+    (fp_line (start -8.89 -15.24) (end -8.89  17.78) (layer F.SilkS) (width 0.15))
+    (fp_line (start -8.89 17.78)  (end 8.89   17.78) (layer F.SilkS) (width 0.15))
     
 
   ${"" /*Getting the through holes*/}

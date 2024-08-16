@@ -1,6 +1,6 @@
 meta:
   engine: 4.1.0
-  version: 0.0.1
+  version: 0.0.2
   author: auryn
 
 units: 
@@ -58,12 +58,12 @@ points:
                     col_net: P4
                     splay: -0.5 ky
                     origin: [-0.5 kx, -0.15 ky]
-                    spread: 1.2 kx
+                    spread: 1.05 kx
                 outer.key:
                     col_net: P3
-                    spread: 1.2 kx
+                    spread: 1.05 kx
                     splay: -0.5 ky 
-                    origin: [-0.8 kx, -0.15 ky]
+                    origin: [-0.52 ky, -0.2 kx]
         mountscrew_top_left:
           anchor:
             ref.aggregate.parts:
@@ -303,7 +303,7 @@ pcbs:
             params:
                 keycaps: true
                 reverse: true
-                hotswap: false
+                hotswap: true
                 from: "{{col_net}}"
                 to: "{{row_net}}"
         promicro:
@@ -313,7 +313,7 @@ pcbs:
                   - main_inner_home
                 shift: [22, 6.5]
             params:
-              reversable_pins: 12
+              reversable_pins: 13
                 # rotate: -90
         battery_connector:
             what: jst-s2b-ph-kl
@@ -330,7 +330,7 @@ pcbs:
             where:
                 ref: 
                   - main_inner_bottom
-                shift: [30.5, 3]
+                shift: [32, 3]
                 rotate: 90
             params:
                 from: pos
@@ -340,7 +340,7 @@ pcbs:
             where:
                 ref: 
                   - main_inner_bottom
-                shift: [30, -6]
+                shift: [31.5, -6]
                 rotate: 90
             params:
                 r1: RST
