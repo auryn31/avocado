@@ -4,10 +4,10 @@ meta:
   author: auryn
 
 units: 
-  kx: u
-  ky: u
-  px: u + 2
-  py: u + 2
+  kx: cx
+  ky: cy
+  px: kx + 2
+  py: ky + 2
   kcow: 14
   kcoh: 14
 
@@ -47,7 +47,7 @@ points:
         thumb:
             anchor:
                 ref: main_inner_bottom
-                shift: [-1 kx, -1.15 ky]
+                shift: [-0.5 kx, -1.15 ky]
             rows.home.row_net: P8
             columns:
                 inner.key:
@@ -101,7 +101,7 @@ outlines:
           where: 
             - /main/
             - /thumb/
-          size: [cx, cy]
+          size: [kx, ky]
     _switch_cutouts:
       - what: rectangle
         where: 
@@ -128,13 +128,29 @@ outlines:
                     shift: [0.4kx, -0.6ky]
                 -   ref: thumb_inner_home
                     shift: [-0.6kx, -0.6ky]
+                -   ref: thumb_inner_home
+                    shift: [-0.6kx, 0.65ky]
+
+                -   ref: main_index_bottom
+                    shift: [-0.6kx, -0.6ky]
+
+                -   ref: main_middle_bottom
+                    shift: [0.4kx, -0.6ky]
+                -   ref: main_middle_bottom
+                    shift: [-0.4kx, -0.6ky]
+
+                -   ref: main_ring_bottom
+                    shift: [0.6kx, -0.6ky]
+                -   ref: main_ring_bottom
+                    shift: [-0.4kx, -0.6ky]
 
                 -   ref: main_pinky_bottom
-                    shift: [1.6kx, -0.6ky]
+                    shift: [0.6kx, -0.6ky]
                 -   ref: main_pinky_bottom
                     shift: [0.6kx, -0.6ky]
                 -   ref: main_pinky_bottom
                     shift: [-0.6kx, -0.6ky]
+                
 
                 -   ref: main_pinky_top
                     shift: [-0.6kx, 0.6ky]
@@ -167,50 +183,49 @@ outlines:
                     shift: [1.8kx, 0.4ky]
 
                 -   ref: main_inner_bottom
-                    shift: [1.8kx, -0.6ky]
+                    shift: [1.8kx, -0.9ky]
     _keycap_outlines:
-        -   what: rectangle
+          - what: outline
+            name: _base
             fillet: 2
-            where: 
-              - /main/
-              - /thumb/
-            size: [1kx , 1ky ] # Choc keycaps are 17.5 x 16.5
-    _board_plate:
+    _switch_plate:
         - what: outline
           name: _base
         - what: polygon
           operation: add
           points:
+            - ref: thumb_home_home
+              shift: [0.5kx, 0.5 ky]
+            - ref: thumb_outer_home
+              shift: [-0.5kx, 0.5 ky]
+            - ref: thumb_outer_home
+              shift: [0, 0]
+        - what: polygon
+          operation: add
+          points:
+            - ref: main_inner_bottom 
+              shift: [0.5 kx, -0.5 ky]
+            - ref: main_inner_bottom 
+              shift: [0.5 kx, -1 ky]
+            - ref: main_inner_bottom 
+              shift: [-0.2 kx, -0.5 ky]
+        - what: polygon
+          operation: add
+          points:
             - ref: main_index_bottom 
-              shift: [-0.5 cx, 0]
+              shift: [0, 0]
             - ref: thumb_inner_home
-              shift: [-0.5 cx, -0.5 cy]
+              shift: [-0.5 kx, -0.5 ky]
             - ref: thumb_home_home
-              shift: [0.5 cx, -0.5 cy]
-            - ref: thumb_outer_home
-              shift: [0.5 cx, -0.5 cy]
-            - ref: thumb_outer_home
-              shift: [0.5 cx, 0.5 cy]
-            - ref: thumb_home_home
-              shift: [0.25 cx, 0.5 cy]
-            - ref: main_inner_bottom
-              shift: [0.5 cx, 0]
+              shift: [-0.5 kx, -0.5 ky]
         - what: outline
-          name: _board_plate
+          name: _switch_plate
           expand: 2
+          fillet: 2
         - what: outline
           name: _switch_cutouts
           operation: subtract
-    plate:
-      - what: outline
-        name: _board_plate
-    preview:
-        -   what: outline
-            name: _board_outline
-            operation: stack
-        -   what: outline
-            name: _keycap_outlines
-            operation: stack
+
 cases.avocado:
     -   what: outline
         name: _board_outline
@@ -221,9 +236,9 @@ cases.avocado:
         extrude: 6
         operation: add
 pcbs:
-  plate:
+  switch_plate:
     outlines:
-      main.outline: plate
+      main.outline: _switch_plate
     footprints:
       screws:
         what: mounting_hole
@@ -250,7 +265,7 @@ pcbs:
               layer: B.SilkS
               justify: left mirror
       
-  bottom:
+  bottom_case:
     outlines:
       main.outline: _board_outline
     footprints:
@@ -277,7 +292,7 @@ pcbs:
               layer: B.SilkS
               justify: left mirror
       
-  avocado:
+  keyboard_pcb:
     outlines:
         main.outline: _board_outline
         keycaps:
@@ -295,8 +310,8 @@ pcbs:
             adjust:
                 shift: [ -7.6, -1.6 ]
                 rotate: 90
-        mx:
-            what: mx
+        switches:
+            what: choc
             where: 
               - /main/
               - /thumb/
@@ -363,11 +378,11 @@ pcbs:
                 <<: *textParams
                 layer: B.SilkS
                 justify: left mirror
-        avocado_image:
-           where:
-             ref: main_middle_bottom
-             shift: [-5, -15]
-           what: avocado
+        # avocado_image:
+        #    where:
+        #      ref: main_middle_bottom
+        #      shift: [-5, -15]
+        #    what: avocado
         screws:
           what: mounting_hole
           params:
