@@ -269,7 +269,7 @@ module.exports = {
     /* Adding lables on the front side of the pcb */
     const lable_txt = `
     ${"" /*Lettering on the silkscreen*/}
-    (fp_text user "promicro" (at 0 -20 ${p.rot}) (layer F.SilkS)
+    (fp_text user "promicro" (at 0 -17 ${p.rot}) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
     )
     `;
@@ -277,7 +277,7 @@ module.exports = {
     /* Adds lables on the back side of the pcb */
     const reversable_lable_txt = `
     ${"" /*Lettering on the silkscreen*/}
-    (fp_text user "promicro" (at 0 -20 ${p.rot}) (layer B.SilkS)
+    (fp_text user "promicro" (at 0 -17 ${p.rot}) (layer B.SilkS)
       (effects (font (size 1 1) (thickness 0.15)) (justify mirror))
     )
     `;

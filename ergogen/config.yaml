@@ -278,19 +278,26 @@ pcbs:
           where: &textWhere
               ref: 
                 - main_pinky_bottom
-              shift: [-7, -0.6 cx]
+              shift: [-7, -0.4 cx]
           params: &textParams
-              text: Avocado
+              text: Avocado v0.2\nA keyboard for Auryn
               justify: left
       back_text:
           <<: *text
           where:
               <<: *textWhere
-              shift: [0, -0.6 cx]
+              shift: [7, -0.4 cx]
           params:
               <<: *textParams
               layer: B.SilkS
               justify: left mirror
+      avocado_image:
+         where:
+           ref: main_index_top
+           shift: [-12, -4]
+         params:
+           scale: 0.05
+         what: avocado
       
   keyboard_pcb:
     outlines:
@@ -326,7 +333,7 @@ pcbs:
             where:
                 ref: 
                   - main_inner_home
-                shift: [22, 6.5]
+                shift: [22, 4.5]
             params:
               reversable_pins: 13
                 # rotate: -90
@@ -335,7 +342,7 @@ pcbs:
             where:
                 ref:
                   - main_inner_bottom
-                shift: [21, -2]
+                shift: [24, -7]
                 rotate: 180
             params:
                 neg: B-
@@ -345,44 +352,39 @@ pcbs:
             where:
                 ref: 
                   - main_inner_bottom
-                shift: [32, 3]
+                shift: [30, -2]
                 rotate: 90
             params:
                 from: pos
                 to: B+
-        wuerth-434121025816:
-            what: wuerth-434121025816
+        reset_switch:
+            what: reset_switch
             where:
                 ref: 
                   - main_inner_bottom
-                shift: [31.5, -6]
+                shift: [30, -10.5]
                 rotate: 90
             params:
                 r1: RST
                 r2: GND
-        front_text: &text
-            what: text
-            where: &textWhere
-                ref: 
-                  - main_pinky_bottom
-                shift: [12, -7]
-            params: &textParams
-                text: Avocado\nA keyboard from Auryn
-                justify: left
-        back_text:
-            <<: *text
-            where:
-                <<: *textWhere
-                shift: [27, -7]
-            params:
-                <<: *textParams
-                layer: B.SilkS
-                justify: left mirror
-        # avocado_image:
-        #    where:
-        #      ref: main_middle_bottom
-        #      shift: [-5, -15]
-        #    what: avocado
+        # front_text: &text
+        #     what: text
+        #     where: &textWhere
+        #         ref: 
+        #           - main_pinky_bottom
+        #         shift: [12, -7]
+        #     params: &textParams
+        #         text: Avocado\nA keyboard from Auryn
+        #         justify: left
+        # back_text:
+        #     <<: *text
+        #     where:
+        #         <<: *textWhere
+        #         shift: [27, -7]
+        #     params:
+        #         <<: *textParams
+        #         layer: B.SilkS
+        #         justify: left mirror
         screws:
           what: mounting_hole
           params:
