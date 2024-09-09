@@ -78,7 +78,7 @@
             bindings = <
     &none       &none       &none       &none       &none                           &none       &none         &none         &none           &none
     &kp LGUI    &kp LALT    &kp LCTRL   &kp LSHFT   &none                           &none       &kp C_PREV    &kp C_VOL_DN  &kp C_VOL_UP    &kp C_NEXT
-    &none       &none       &none       &none       &none                           &none       &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2    &bt BT_SEL 3     
+    &none       &none       &none       &none       &none                           &bt BT_CLR       &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2    &bt BT_SEL 3     
                                         &trans      &none   &none       &kp C_STOP  &kp C_PP    &kp C_MUTE     
             >;
         };
