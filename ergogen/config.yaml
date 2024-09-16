@@ -92,7 +92,7 @@ points:
           anchor:
             ref.aggregate.parts:
               [thumb_home_home, thumb_outer_home]
-            shift: [0, 0]
+            shift: [0, ky / 2]
           columns.screw.key.tags: [screw]
 outlines:
     _base: 
@@ -342,7 +342,7 @@ pcbs:
             where:
                 ref:
                   - main_inner_bottom
-                shift: [24, -7]
+                shift: [22, -7]
                 rotate: 180
             params:
                 neg: B-
