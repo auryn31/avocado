@@ -88,8 +88,8 @@
       // tp-neg-inertia = <6>;
       // Enable clicking by tapping on the TP.
       // Not all TPs support this.
-      // tp-press-to-select;
-      // tp-press-to-select-threshold = <10>;
+      tp-press-to-select;
+      tp-press-to-select-threshold = <10>;
       // Adjust axis settings on the TP
       // Works only on some trackpoints, but may be properly considered by the
       // trackpoint's acceleration features (which may or may not have an
@@ -99,7 +99,7 @@
       //  `input-listener` settings below.
       // tp-xy-swap;
       // tp-x-invert;
-      // tp-y-invert;
+      tp-y-invert;
       // Set sampling rate
       //
       // The frequency at which the mouse samples and sends data (in hz).
