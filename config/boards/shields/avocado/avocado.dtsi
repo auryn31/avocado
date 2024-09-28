@@ -7,7 +7,7 @@
     };
 
     default_transform: keymap_transform_0 {
-        compatible = "zmk,matrix-transform,input-listener-ps2";
+        compatible = "zmk,matrix-transform";
         columns = <10>;
         rows = <4>;
 // | SW1  | SW2  | SW3  | SW4  | SW5  |   | SW5  | SW4  | SW3  | SW2  | SW1  |
@@ -27,9 +27,9 @@ RC(2,0) RC(2,1) RC(2,2) RC(2,3) RC(2,4)    RC(2,5) RC(2,6) RC(2,7) RC(2,8) RC(2,
         label = "default_kscan";
         diode-direction = "col2row";
 
-        row-gpios = <&pro_micro 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
-                    <&pro_micro 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
-                    <&pro_micro 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
-                    <&pro_micro 8 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;
+        row-gpios = <&pro_micro 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
+                    <&pro_micro 5 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
+                    <&pro_micro 6 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
+                    <&pro_micro 7 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;
     };
 };
