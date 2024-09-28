@@ -7,7 +7,7 @@
     };
 
     default_transform: keymap_transform_0 {
-        compatible = "zmk,matrix-transform";
+        compatible = "zmk,matrix-transform,input-listener-ps2";
         columns = <10>;
         rows = <4>;
 // | SW1  | SW2  | SW3  | SW4  | SW5  |   | SW5  | SW4  | SW3  | SW2  | SW1  |

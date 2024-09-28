@@ -1,4 +1,4 @@
-if SHIELD_AVOCADO_LEFT
+if SHIELD_AVOCADO_RIGHT
 
 config ZMK_KEYBOARD_NAME
     default "Avocado"
