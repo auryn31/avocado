@@ -13,9 +13,9 @@
 #define FUN     4
 #define MED     5
 
-#define MOUSE_KEYS 2
-#define MOUSE_TP 3
-#define MOUSE_TP_SET 4
+#define MOUSE_KEYS 6
+#define MOUSE_TP 7
+#define MOUSE_TP_SET 8
 #define HAS_MOUSE_KEYS
 #define HAS_MOUSE_TP
 
