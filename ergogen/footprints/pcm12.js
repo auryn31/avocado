@@ -1,10 +1,10 @@
 module.exports = {
-    params: {
-        designator: 'T',
-        from: { type: 'net', value: 'from' },
-        to: { type: 'net', value: 'to' },
-    },
-    body: p => `
+  params: {
+    designator: "T",
+    from: { type: "net", value: "from" },
+    to: { type: "net", value: "to" },
+  },
+  body: (p) => `
         (module Button_Switch_SMD:SW_SPDT_PCM12 (layer F.Cu) (tedit 5A02FC95)
             ${p.at /* parametric position */}
             (descr "Ultraminiature Surface Mount Slide Switch, right-angle, https://www.ckswitches.com/media/1424/pcm.pdf")
@@ -39,7 +39,6 @@ module.exports = {
             (pad 1 smd rect (at -2.25 -1.43 ${p.rot}) (size 0.7 1.5) (layers F.Cu F.Paste F.Mask) ${p.from.str})
 
             (pad 2 smd rect (at 0.75 -1.43 ${p.rot}) (size 0.7 1.5) (layers F.Cu F.Paste F.Mask) ${p.to.str})
-            (pad "" smd rect (at 2.25 -1.43 ${p.rot}) (size 0.7 1.5) (layers F.Cu F.Paste F.Mask))
             (pad "" smd rect (at -3.65 1.43 ${p.rot}) (size 1 0.8) (layers F.Cu F.Paste F.Mask))
             (pad "" smd rect (at 3.65 1.43 ${p.rot}) (size 1 0.8) (layers F.Cu F.Paste F.Mask))
             (pad "" smd rect (at 3.65 -0.78 ${p.rot}) (size 1 0.8) (layers F.Cu F.Paste F.Mask))
@@ -50,12 +49,11 @@ module.exports = {
             (pad 1 smd rect (at 2.25 -1.43 ${p.rot}) (size 0.7 1.5) (layers B.Cu B.Paste B.Mask) ${p.from.str})
 
             (pad 2 smd rect (at -0.75 -1.43 ${p.rot}) (size 0.7 1.5) (layers B.Cu B.Paste B.Mask) ${p.to.str})
-            (pad "" smd rect (at -2.25 -1.43 ${p.rot}) (size 0.7 1.5) (layers B.Cu B.Paste B.Mask))
             (pad "" smd rect (at 3.65 1.43 ${p.rot}) (size 1 0.8) (layers B.Cu B.Paste B.Mask))
             (pad "" smd rect (at -3.65 1.43 ${p.rot}) (size 1 0.8) (layers B.Cu B.Paste B.Mask))
             (pad "" smd rect (at -3.65 -0.78 ${p.rot}) (size 1 0.8) (layers B.Cu B.Paste B.Mask))
             (pad "" smd rect (at 3.65 -0.78 ${p.rot}) (size 1 0.8) (layers B.Cu B.Paste B.Mask))
 
         )
-    `
-}
+    `,
+};

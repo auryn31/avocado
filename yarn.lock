@@ -480,11 +480,6 @@ safe-buffer@~5.1.0, safe-buffer@~5.1.1:
   resolved "https://registry.yarnpkg.com/safe-buffer/-/safe-buffer-5.1.2.tgz#991ec69d296e0313747d59bdfd2b745c35f8828d"
   integrity sha512-Gd2UZBJDkXlY7GbJxfsE8/nvKkUEU1G38c1siN6QP6a9PT9MmHB8GnpscSmMJSoF8LOIrt8ud/wPtojys4G6+g==
 
-sax-wasm@2.2.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/sax-wasm/-/sax-wasm-2.2.0.tgz#9fba16cf78569a2783f2e2155117ef751acc9caa"
-  integrity sha512-juyXYHrebH0i91WfQw/ZHhpoLZCsqz5bjQIC/VACMJvj6C7v4JuH5HEnY14kZ3HHb2MOIJo2xAOgVoNX5ilykQ==
-
 seedrandom@^3.0.5:
   version "3.0.5"
   resolved "https://registry.yarnpkg.com/seedrandom/-/seedrandom-3.0.5.tgz#54edc85c95222525b0c7a6f6b3543d8e0b3aa0a7"
@@ -546,13 +541,6 @@ supports-color@^5.5.0:
   integrity sha512-QjVjwdXIt408MIiAqCX4oUKsgU2EqAGzs2Ppkm4aQYbjm+ZEWEcW4SfFNTr4uMNZma0ey4f5lgLrkB0aX0QMow==
   dependencies:
     has-flag "^3.0.0"
-
-svg-path-interpolator@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/svg-path-interpolator/-/svg-path-interpolator-0.3.0.tgz#c923c16dbece96f8fa46fcc99ce6c090bced11b8"
-  integrity sha512-V6uKOJvwytirsYZLKdVWMGDMryan8BMZoN0QJz5X1gnh1F90dr4RVm+U/fyb6GgVwhlsKsAr6T1NlSc5BBCRRw==
-  dependencies:
-    sax-wasm "2.2.0"
 
 tiny-emitter@^2.1.0:
   version "2.1.0"
