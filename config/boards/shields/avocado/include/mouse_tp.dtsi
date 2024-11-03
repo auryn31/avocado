@@ -62,8 +62,8 @@
       // trackpoints also allow you to adjust it in their firmware. Check
       // the driver options below for more info.
       xy-swap;
-      x-invert;
-      // y-invert;
+      // x-invert;
+      y-invert;
       // Set the layer that should automatically activate when the mouse is
       // moving.
       layer-toggle = <MOUSE_TP>;
