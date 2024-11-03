@@ -16,51 +16,51 @@ points:
     zones:
         main:
             rows:
-                bottom.row_net: P2
-                home.row_net: P0
-                top.row_net: P1
+                bottom.row_net: P4
+                home.row_net: P3
+                top.row_net: P2
             columns:
                 pinky:
                     key:
-                        col_net: P7
+                        col_net: P10
                         spread: kx
                 ring:
                     key:
-                        col_net: P6
+                        col_net: P16
                         stagger: 0.4 ky
                         spread: kx
                 middle:
                     key:
-                        col_net: P5
+                        col_net: P14
                         stagger: 0.28 ky
                         spread: kx
                 index:
                     key:
-                        col_net: P4
+                        col_net: P15
                         stagger: -0.33 ky
                         spread: kx
                 inner:
                     key:
-                        col_net: P3
+                        col_net: P18
                         stagger: -0.11 ky 
                         spread: kx
         thumb:
             anchor:
                 ref: main_inner_bottom
                 shift: [-0.5 kx, -1.15 ky]
-            rows.home.row_net: P8
+            rows.home.row_net: P5
             columns:
                 inner.key:
                     origin: [-1 kx, -1.15 ky]
-                    col_net: P5
+                    col_net: P14
                     spread: kx
                 home.key:
-                    col_net: P4
+                    col_net: P15
                     splay: -0.5 ky
                     origin: [-0.5 kx, -0.15 ky]
                     spread: 1.05 kx
                 outer.key:
-                    col_net: P3
+                    col_net: P18
                     spread: 1.05 kx
                     splay: -0.5 ky 
                     origin: [-0.52 ky, -0.2 kx]
@@ -88,11 +88,23 @@ points:
               [main_index_home, main_index_bottom, main_inner_home, main_inner_bottom]
             shift: [0, 0]
           columns.screw.key.tags: [screw]
-        mountscrew_right_right:
+        # mountscrew_right_right:
+        #   anchor:
+        #     ref.aggregate.parts:
+        #       [thumb_home_home, thumb_outer_home]
+        #     shift: [0, ky / 2]
+        #   columns.screw.key.tags: [screw]
+        mountscrew_cover_left:
           anchor:
             ref.aggregate.parts:
-              [thumb_home_home, thumb_outer_home]
-            shift: [0, ky / 2]
+              [thumb_home_home]
+            shift: [1.5, 20.5]
+          columns.screw.key.tags: [screw]
+        mountscrew_cover_right:
+          anchor:
+            ref.aggregate.parts:
+              [thumb_home_home]
+            shift: [16, 22.65]
           columns.screw.key.tags: [screw]
 outlines:
     _base: 
@@ -240,26 +252,27 @@ pcbs:
     outlines:
       main.outline: _switch_plate
     footprints:
-      screws:
-        what: mounting_hole
-        params:
-          drill: 4.3
-          outline: 0.4
-        where: [screw]
+      # INFO: No need for screws, also they block the trackpoint
+      # screws:
+      #   what: mounting_hole
+      #   params:
+      #     drill: 4.3
+      #     outline: 0.4
+      #   where: [screw]
       front_text: &text
           what: text
           where: &textWhere
               ref: 
                 - main_index_bottom
-              shift: [-7, -0.6 cx]
+              shift: [-7, -0.5 kx]
           params: &textParams
-              text: MX Switch Plate
+              text: スイッチプレート
               justify: left
       back_text:
           <<: *text
           where:
               <<: *textWhere
-              shift: [7, -0.6 cx]
+              shift: [7, -0.5 kx]
           params:
               <<: *textParams
               layer: B.SilkS
@@ -280,7 +293,7 @@ pcbs:
                 - main_pinky_bottom
               shift: [-7, -0.4 cx]
           params: &textParams
-              text: Avocado v0.2\nA keyboard for Auryn
+              text: アボカド v0.2\nA keyboard for Auryn
               justify: left
       back_text:
           <<: *text
@@ -315,8 +328,8 @@ pcbs:
                 from: "{{row_net}}"
                 to: "{{row_net}}"
             adjust:
-                shift: [ 0, -4 ]
-                rotate: 180
+                shift: [ -4, -3.6 ]
+                rotate: 90
         switches:
             what: choc
             where: 
@@ -342,8 +355,8 @@ pcbs:
             where:
                 ref:
                   - main_inner_bottom
-                shift: [14, -3]
-                rotate: 90
+                shift: [29, -12]
+                rotate: 180
             params:
                 neg: B-
                 pos: pos
@@ -362,14 +375,14 @@ pcbs:
             where:
                 ref: 
                   - main_inner_bottom
-                shift: [32.25, 8.25]
+                shift: [25.75, 10]
                 rotate: 270
             params:
                 pos: RAW
                 gnd: GND
-                dta: P2
-                clk: P3
-                rst: P4
+                dta: P1
+                clk: P0
+                rst: P9
         reset_switch:
             what: reset_switch
             where:
@@ -380,25 +393,26 @@ pcbs:
             params:
                 r1: RST
                 r2: GND
-        # front_text: &text
-        #     what: text
-        #     where: &textWhere
-        #         ref: 
-        #           - main_pinky_bottom
-        #         shift: [12, -7]
-        #     params: &textParams
-        #         text: Avocado\nA keyboard from Auryn
-        #         justify: left
-        # back_text:
-        #     <<: *text
-        #     where:
-        #         <<: *textWhere
-        #         shift: [27, -7]
-        #     params:
-        #         <<: *textParams
-        #         layer: B.SilkS
-        #         justify: left mirror
+        front_text: &text
+            what: text
+            where: &textWhere
+                ref: 
+                  - main_pinky_bottom
+                shift: [-9, -9]
+            params: &textParams
+                text: アボカド v0.2
+                justify: left
+        back_text:
+            <<: *text
+            where:
+                <<: *textWhere
+                shift: [9, -9]
+            params:
+                <<: *textParams
+                layer: B.SilkS
+                justify: left mirror
         screws:
           what: mounting_hole
           params:
+            outline: 0.2
           where: [screw]

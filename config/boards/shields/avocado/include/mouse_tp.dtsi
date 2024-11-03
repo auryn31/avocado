@@ -97,7 +97,7 @@
       //
       // Alternatively consider achieving the same effect using the
       //  `input-listener` settings below.
-      // tp-xy-swap;
+      tp-xy-swap;
       // tp-x-invert;
       tp-y-invert;
       // Set sampling rate
