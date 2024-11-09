@@ -380,8 +380,8 @@ pcbs:
             params:
                 pos: RAW
                 gnd: GND
-                dta: P1
-                clk: P0
+                dta: P0
+                clk: P1
                 rst: P9
         reset_switch:
             what: reset_switch
