@@ -70,7 +70,7 @@
 
         nav_layer {
             bindings = <
-    &none       &none       &none       &none       &none                           &kp LC(Y)   &kp LC(V)   &kp LC(C)   &kp LC(X)   &kp LC(Z)
+    &none       &none       &none       &none       &none                           &kp LG(Y)   &kp LG(V)   &kp LG(C)   &kp LG(X)   &kp LG(Z)
     &kp LGUI    &kp LALT    &kp LCTRL   &kp LSHFT   &none                           &kp LEFT    &kp DOWN    &kp UP    &kp RIGHT      &kp CAPS
     &none       &none       &none       &none       &none                           &kp INS     &kp HOME    &kp PG_DN   &kp PG_UP   &kp END
                                         &none       &trans  &none       &kp RET     &kp BSPC    &kp DEL     
