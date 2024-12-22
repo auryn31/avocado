@@ -16,4 +16,10 @@ if SHIELD_AVOCADO_LEFT || SHIELD_AVOCADO_RIGHT
 config ZMK_SPLIT
     default y
 
+config I2Y
+    default y
+
+config SSD1306
+    default y
+
 endif
