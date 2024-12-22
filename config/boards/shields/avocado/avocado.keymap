@@ -11,9 +11,6 @@
 #define MED     5
 
 
-
-
-
 / {
     behaviors {
         hm: homerow_mods {
