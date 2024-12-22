@@ -2,9 +2,6 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 
-// The default keymap is roughly on Miryoku layout
-// (https://github.com/manna-harbour/miryoku).
-// Customize on your own on the config folder.
 
 #define BASE    0
 #define NAV     1
@@ -12,6 +9,9 @@
 #define NUM     3
 #define FUN     4
 #define MED     5
+
+
+
 
 
 / {
@@ -34,7 +34,7 @@
             bindings = <
     &kp Q       &kp W       &kp E       &kp R       &kp T                                   &kp Y           &kp U       &kp I       &kp O           &kp P
     &hm LGUI A  &hm LALT S  &hm LCTRL D &hm LSHFT F &kp G                                   &kp H           &hm LSHFT J &hm LCTRL K &hm RALT L      &hm LGUI SEMI
-    &kp Z       &kp x       &kp C       &kp V       &kp B                                   &kp N           &kp M       &kp COMMA   &kp DOT         &kp FSLH
+    &kp Z       &kp X       &kp C       &kp V       &kp B                                   &kp N           &kp M       &kp COMMA   &kp DOT         &kp FSLH
                                         &lt MED ESC &lt NAV SPACE   &kp TAB     &lt SYM RET &lt NUM BSPC    &lt FUN DEL
             >;
         };
