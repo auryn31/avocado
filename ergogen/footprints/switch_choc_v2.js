@@ -1,4 +1,3 @@
-// https://github.com/ceoloide/ergogen-footprints/blob/main/switch_choc_v1_v2.js
 // Copyright (c) 2023 Marco Massarelli
 //
 // SPDX-License-Identifier: CC-BY-NC-SA-4.0

@@ -4,8 +4,11 @@ name: Avocado
 type: shield
 url: https://github.com/Narkoleptika/josukey/
 requires: [pro_micro]
+exposes: 
+  - i2c_oled
 features:
     - keys
+    - display
 siblings:
     - avocado_left
     - avocado_right

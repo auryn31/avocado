@@ -1,11 +1,11 @@
 meta:
   engine: 4.1.0
-  version: 0.0.2
+  version: 0.0.3
   author: auryn
 
 units: 
-  kx: cx
-  ky: cy
+  kx: U
+  ky: U
   px: kx + 2
   py: ky + 2
   kcow: 14
@@ -47,7 +47,7 @@ points:
         thumb:
             anchor:
                 ref: main_inner_bottom
-                shift: [-0.5 kx, -1.15 ky]
+                shift: [-0.5 kx, -1 ky]
             rows.home.row_net: P5
             columns:
                 inner.key:
@@ -97,14 +97,14 @@ points:
         mountscrew_cover_left:
           anchor:
             ref.aggregate.parts:
-              [thumb_home_home]
-            shift: [1.5, 20.5]
+              [main_inner_bottom]
+            shift: [13, 0]
           columns.screw.key.tags: [screw]
         mountscrew_cover_right:
           anchor:
             ref.aggregate.parts:
-              [thumb_home_home]
-            shift: [16, 22.65]
+              [main_inner_bottom]
+            shift: [31, 0]
           columns.screw.key.tags: [screw]
 outlines:
     _base: 
@@ -141,7 +141,7 @@ outlines:
                 -   ref: thumb_inner_home
                     shift: [-0.6kx, -0.6ky]
                 -   ref: thumb_inner_home
-                    shift: [-0.6kx, 0.65ky]
+                    shift: [-0.6kx, 0.51ky]
 
                 -   ref: main_index_bottom
                     shift: [-0.6kx, -0.6ky]
@@ -195,7 +195,7 @@ outlines:
                     shift: [1.8kx, 0.4ky]
 
                 -   ref: main_inner_bottom
-                    shift: [1.8kx, -0.9ky]
+                    shift: [1.8kx, -0.78ky]
     _keycap_outlines:
           - what: outline
             name: _base
@@ -238,45 +238,44 @@ outlines:
           name: _switch_cutouts
           operation: subtract
 
-cases.avocado:
-    -   what: outline
-        name: _board_outline
-        extrude: 3
-        operation: subtract
-    -   what: outline
-        name: _keycap_outlines
-        extrude: 6
-        operation: add
+# cases.avocado:
+#     -   what: outline
+#         name: _board_outline
+#         extrude: 3
+#         operation: subtract
+#     -   what: outline
+#         name: _keycap_outlines
+#         extrude: 6
+#         operation: add
 pcbs:
-  switch_plate:
-    outlines:
-      main.outline: _switch_plate
-    footprints:
-      # INFO: No need for screws, also they block the trackpoint
-      # screws:
-      #   what: mounting_hole
-      #   params:
-      #     drill: 4.3
-      #     outline: 0.4
-      #   where: [screw]
-      front_text: &text
-          what: text
-          where: &textWhere
-              ref: 
-                - main_index_bottom
-              shift: [-7, -0.5 kx]
-          params: &textParams
-              text: スイッチプレート
-              justify: left
-      back_text:
-          <<: *text
-          where:
-              <<: *textWhere
-              shift: [7, -0.5 kx]
-          params:
-              <<: *textParams
-              layer: B.SilkS
-              justify: left mirror
+  # switch_plate:
+  #   outlines:
+  #     main.outline: _switch_plate
+  #   footprints:
+  #     screws:
+  #       what: mounting_hole
+  #       params:
+  #         drill: 4.3
+  #         outline: 0.4
+  #       where: [screw]
+  #     front_text: &text
+  #         what: text
+  #         where: &textWhere
+  #             ref: 
+  #               - main_index_bottom
+  #             shift: [-7, -0.5 kx]
+  #         params: &textParams
+  #             text: スイッチプレート
+  #             justify: left
+  #     back_text:
+  #         <<: *text
+  #         where:
+  #             <<: *textWhere
+  #             shift: [7, -0.5 kx]
+  #         params:
+  #             <<: *textParams
+  #             layer: B.SilkS
+  #             justify: left mirror
       
   bottom_case:
     outlines:
@@ -293,7 +292,7 @@ pcbs:
                 - main_pinky_bottom
               shift: [-7, -0.4 cx]
           params: &textParams
-              text: アボカド v0.2\nA keyboard for Auryn
+              text: アボカド v0.3\nA keyboard for Auryn
               justify: left
       back_text:
           <<: *text
@@ -313,11 +312,12 @@ pcbs:
          what: avocado
       
   keyboard_pcb:
+    template: kicad8
     outlines:
         main.outline: _board_outline
-        keycaps:
-            outline: _keycap_outlines
-            layer: Eco1.User
+        # keycaps:
+        #     outline: _switch_cutouts
+        #     layer: Eco1.User
     footprints:
         diode:
             what: sod-123w
@@ -328,16 +328,16 @@ pcbs:
                 from: "{{row_net}}"
                 to: "{{row_net}}"
             adjust:
-                shift: [ -4, -3.6 ]
+                shift: [-7.5, -3.6 ]
                 rotate: 90
         switches:
-            what: choc
+            what: switch_choc_v2
             where: 
               - /main/
               - /thumb/
             params:
-                keycaps: true
-                reverse: true
+                include_keycap: true
+                reversible: true
                 hotswap: true
                 from: "{{col_net}}"
                 to: "{{row_net}}"
@@ -346,7 +346,7 @@ pcbs:
             where:
                 ref: 
                   - main_inner_home
-                shift: [22, 3.5]
+                shift: [22, 5.5]
             params:
               reversable_pins: 13
                 # rotate: -90
@@ -355,8 +355,8 @@ pcbs:
             where:
                 ref:
                   - main_inner_bottom
-                shift: [29, -12]
-                rotate: 180
+                shift: [30, -6]
+                rotate: 270
             params:
                 neg: B-
                 pos: pos
@@ -365,24 +365,21 @@ pcbs:
             where:
                 ref: 
                   - main_inner_top
-                shift: [22, 4.5]
+                shift: [22, 5.5]
                 rotate: 180
             params:
                 from: pos
                 to: B+
-        trackpoint:
-            what: trackpoint
-            where:
-                ref: 
-                  - main_inner_bottom
-                shift: [25.75, 10]
-                rotate: 270
+        display:
+            what: display_ssd1306
             params:
-                pos: RAW
-                gnd: GND
-                dta: P0
-                clk: P1
-                rst: P9
+                reversible: true
+                SDA: "P19"
+                SCL: "P20"
+            where:
+              ref: 
+                - main_inner_home
+              shift: [22, -2]
         reset_switch:
             what: reset_switch
             where:
@@ -400,7 +397,7 @@ pcbs:
                   - main_pinky_bottom
                 shift: [-9, -9]
             params: &textParams
-                text: アボカド v0.2
+                text: アボカド v0.3
                 justify: left
         back_text:
             <<: *text
