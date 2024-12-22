@@ -16,6 +16,9 @@ if SHIELD_AVOCADO_LEFT || SHIELD_AVOCADO_RIGHT
 config ZMK_SPLIT
     default y
 
+config ZMK_DISPLAY
+    default y
+
 config I2C
     default y
 
