@@ -7,7 +7,3 @@
                 <&pro_micro 15 GPIO_ACTIVE_HIGH>,
                 <&pro_micro 18 GPIO_ACTIVE_HIGH>;
 };
-
-&i2c0 {
-    status = "okay";
-};
