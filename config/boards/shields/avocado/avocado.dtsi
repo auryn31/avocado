@@ -36,16 +36,17 @@ RC(2,0) RC(2,1) RC(2,2) RC(2,3) RC(2,4)    RC(2,5) RC(2,6) RC(2,7) RC(2,8) RC(2,
     };
 };
 
-
+&pro_micro_i2c {
+    status = "disabled";
+};
 
 &i2c0 {
-    compatible = "nordic,nrf-twim"; // I2C controller instead of generic
+    compatible = "nordic,nrf-twim";
     status = "okay";
     pinctrl-0 = <&i2c0_default>;
     pinctrl-1 = <&i2c0_sleep>;
     pinctrl-names = "default", "sleep";
     clock-frequency = <I2C_BITRATE_FAST>;
-    /* Nodes using the bus go here */
 
     oled: ssd1306@3c {
         compatible = "solomon,ssd1306fb";
@@ -60,26 +61,6 @@ RC(2,0) RC(2,1) RC(2,2) RC(2,3) RC(2,4)    RC(2,5) RC(2,6) RC(2,7) RC(2,8) RC(2,
         segment-remap;
         com-invdir;
         com-sequential;
-        prechargep = <0x22>;
-    };
-};
-
-&pro_micro_i2c {
-    status = "okay";
-
-    oled: ssd1306@3c {
-        compatible = "solomon,ssd1306fb";
-        reg = <0x3c>;
-        width = <128>;
-        height = <32>;
-        segment-offset = <0>;
-        page-offset = <0>;
-        display-offset = <0>;
-        multiplex-ratio = <31>;
-        segment-remap;
-        com-invdir;
-        com-sequential;
-        inversion-on;
         prechargep = <0x22>;
     };
 };
