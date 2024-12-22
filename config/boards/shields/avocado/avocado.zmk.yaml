@@ -2,7 +2,7 @@ file_format: "1"
 id: avocado
 name: Avocado
 type: shield
-url: https://github.com/Narkoleptika/josukey/
+url: https://github.com/auryn31/avocado
 requires: [pro_micro]
 exposes: [i2c_oled]
 features:
