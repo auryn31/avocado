@@ -1,6 +1,6 @@
 config SHIELD_AVOCADO_LEFT
-    def_bool $(shields_list_contains,avocado)
+    def_bool $(shields_list_contains,avocado_left)
 
 config SHIELD_AVOCADO_RIGHT
-    def_bool $(shields_list_contains,avocado)
+    def_bool $(shields_list_contains,avocado_right)
 
