@@ -1,6 +1,6 @@
 file_format: "1"
-id: avocado
-name: Avocado
+id: tofu
+name: Tofu
 type: shield
 url: https://github.com/auryn31/avocado
 requires: [pro_micro]

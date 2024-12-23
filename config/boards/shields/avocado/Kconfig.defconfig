@@ -1,7 +1,7 @@
 if SHIELD_AVOCADO_RIGHT
 
 config ZMK_KEYBOARD_NAME
-    default "Tofu Choc"
+    default "Retro Tofu"
 
 config ZMK_SPLIT_ROLE_CENTRAL
     default y
