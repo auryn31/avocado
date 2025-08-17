@@ -1,13 +1,13 @@
 meta:
   engine: 4.1.0
-  version: 0.0.2
+  version: 0.0.3
   author: auryn
 
 units: 
-  kx: cx
-  ky: cy
-  px: kx + 2
-  py: ky + 2
+  kx: cx + 2 
+  ky: cy + 2
+  sky: 0.5ky
+  skx: 0.5kx
   kcow: 14
   kcoh: 14
 
@@ -16,96 +16,115 @@ points:
     zones:
         main:
             rows:
-                bottom.row_net: P4
-                home.row_net: P3
-                top.row_net: P2
+                bottom.row_net: D0
+                home.row_net: D1
+                top.row_net: D2
             columns:
                 pinky:
                     key:
-                        col_net: P10
+                        col_net: D3
                         spread: kx
                 ring:
                     key:
-                        col_net: P16
+                        col_net: D4
                         stagger: 0.4 ky
                         spread: kx
                 middle:
                     key:
-                        col_net: P14
+                        col_net: D5
                         stagger: 0.28 ky
                         spread: kx
                 index:
                     key:
-                        col_net: P15
+                        col_net: D6
                         stagger: -0.33 ky
                         spread: kx
                 inner:
                     key:
-                        col_net: P18
+                        col_net: D7
                         stagger: -0.11 ky 
                         spread: kx
         thumb:
             anchor:
                 ref: main_inner_bottom
                 shift: [-0.5 kx, -1.15 ky]
-            rows.home.row_net: P5
+            rows.home.row_net: D8
             columns:
                 inner.key:
                     origin: [-1 kx, -1.15 ky]
-                    col_net: P14
+                    col_net: D5 
                     spread: kx
                 home.key:
-                    col_net: P15
+                    col_net: D6
+                    spread: 1.1 kx
                     splay: -0.5 ky
                     origin: [-0.5 kx, -0.15 ky]
-                    spread: 1.05 kx
                 outer.key:
-                    col_net: P18
-                    spread: 1.05 kx
+                    col_net: D7
+                    spread: 1.1 kx
                     splay: -0.5 ky 
                     origin: [-0.52 ky, -0.2 kx]
         mountscrew_top_left:
           anchor:
             ref.aggregate.parts:
-              [main_pinky_top, main_ring_top, main_ring_home]
-            shift: [-2.5, -0.5]
+              [main_pinky_top]
+            shift: [-skx, sky]
           columns.screw.key.tags: [screw]
         mountscrew_bottom_left:
           anchor:
             ref.aggregate.parts:
-              [main_pinky_home, main_ring_home, main_ring_bottom]
-            shift: [-2.5, -0.5]
+              [main_pinky_bottom]
+            shift: [-sky, -sky]
           columns.screw.key.tags: [screw]
         mountscrew_top_right:
           anchor:
             ref.aggregate.parts:
-              [main_index_top, main_index_home, main_inner_top, main_inner_home]
-            shift: [0, 0]
+              [main_inner_top]
+            shift: [skx, sky]
           columns.screw.key.tags: [screw]
-        mountscrew_bottom_right:
+        mountscrew_bottom_middle:
           anchor:
             ref.aggregate.parts:
-              [main_index_home, main_index_bottom, main_inner_home, main_inner_bottom]
-            shift: [0, 0]
+              [thumb_inner_home]
+            shift: [-skx, -sky]
           columns.screw.key.tags: [screw]
-        # mountscrew_right_right:
-        #   anchor:
-        #     ref.aggregate.parts:
-        #       [thumb_home_home, thumb_outer_home]
-        #     shift: [0, ky / 2]
-        #   columns.screw.key.tags: [screw]
-        mountscrew_cover_left:
+        mcuscrew_bottom_right:
           anchor:
             ref.aggregate.parts:
-              [thumb_home_home]
-            shift: [1.5, 20.5]
+              [main_inner_home]
+            shift: [34, -5]
           columns.screw.key.tags: [screw]
-        mountscrew_cover_right:
+        mcuscrew_bottom_left:
           anchor:
             ref.aggregate.parts:
-              [thumb_home_home]
-            shift: [16, 22.65]
+              [main_inner_home]
+            shift: [12, -5]
           columns.screw.key.tags: [screw]
+        mcuscrew_top_right:
+          anchor:
+            ref.aggregate.parts:
+              [main_inner_top]
+            shift: [34, -3.5]
+          columns.screw.key.tags: [screw]
+        mcuscrew_top_left:
+          anchor:
+            ref.aggregate.parts:
+              [main_inner_top]
+            shift: [12, -3.5]
+          columns.screw.key.tags: [screw]
+        outer_top_right:
+          anchor:
+            ref.aggregate.parts:
+              [thumb_outer_home]
+            shift: [skx, sky]
+          columns.screw.key.tags: [screw]
+        outer_bottom_right:
+          anchor:
+            ref.aggregate.parts:
+              [thumb_outer_home]
+            shift: [skx, -sky]
+          columns.screw.key.tags: [screw]
+
 outlines:
     _base: 
         - what: rectangle
@@ -133,8 +152,8 @@ outlines:
 
                 -   ref: thumb_home_home
                     shift: [0.4kx, -0.6ky]
-                -   ref: thumb_home_home
-                    shift: [-0.4kx, -0.6ky]
+                # -   ref: thumb_home_home
+                #     shift: [-0.4kx, -0.6ky]
 
                 -   ref: thumb_inner_home
                     shift: [0.4kx, -0.6ky]
@@ -187,12 +206,12 @@ outlines:
                 -   ref: main_inner_top
                     shift: [-0.4kx, 0.6ky]
                 -   ref: main_inner_top
-                    shift: [0.5kx, 0.6ky]
+                    shift: [0.6kx, 0.6ky]
 
                 -   ref: main_inner_top
-                    shift: [0.6kx, 0.4ky]
+                    shift: [0.6kx, -0.07ky]
                 -   ref: main_inner_top
-                    shift: [1.8kx, 0.4ky]
+                    shift: [1.8kx, -0.07ky]
 
                 -   ref: main_inner_bottom
                     shift: [1.8kx, -0.9ky]
@@ -285,6 +304,7 @@ pcbs:
       screws:
         what: mounting_hole
         params:
+          drill: 1.8
         where: [screw]
       front_text: &text
           what: text
@@ -293,7 +313,7 @@ pcbs:
                 - main_pinky_bottom
               shift: [-7, -0.4 cx]
           params: &textParams
-              text: アボカド v0.2\nA keyboard for Auryn
+              text: アボカド v0.3\nA keyboard for Auryn
               justify: left
       back_text:
           <<: *text
@@ -341,76 +361,69 @@ pcbs:
                 hotswap: true
                 from: "{{col_net}}"
                 to: "{{row_net}}"
-        promicro:
-            what: promicro_pretty
+        mcu:
+            what: xiao_ble
             where:
                 ref: 
-                  - main_inner_home
-                shift: [22, 3.5]
-            params:
-              reversable_pins: 13
+                  - main_inner_top
+                shift: [23, -0.7ky]
                 # rotate: -90
-        battery_connector:
-            what: jst-s2b-ph-kl
-            where:
-                ref:
-                  - main_inner_bottom
-                shift: [29, -12]
-                rotate: 180
             params:
-                neg: B-
-                pos: pos
+              BATP: pos
+
+        battery_pads:
+          what: pads
+          params:
+            reverse: true
+            net_1: "B+"
+            net_2: "GND"
+            label_1: "+"
+            label_2: ""
+            label_at_bottom: true
+            space: 1.25
+          where:
+            ref: main_inner_home
+            shift: [kx, -0.3ky]
+            rotate: 0
         on_off_switch:
             what: pcm12
             where:
                 ref: 
-                  - main_inner_top
-                shift: [22, 4.5]
-                rotate: 180
+                  - main_inner_bottom
+                shift: [34, 0]
+                rotate: 90
             params:
                 from: pos
                 to: B+
-        trackpoint:
-            what: trackpoint
-            where:
-                ref: 
-                  - main_inner_bottom
-                shift: [25.75, 10]
-                rotate: 270
-            params:
-                pos: RAW
-                gnd: GND
-                dta: P0
-                clk: P1
-                rst: P9
-        reset_switch:
-            what: reset_switch
-            where:
-                ref: 
-                  - main_inner_top
-                shift: [14, 4.5]
-                rotate: 0
-            params:
-                r1: RST
-                r2: GND
+        enc_wheel:
+          what: rotary
+          params:
+            from: ""
+            to: ""
+            A: "D9"
+            B: "D10"
+            C: "GND"
+          where:
+            ref: main_inner_bottom
+            shift: [23, 0]
+            rotate: 270
         front_text: &text
             what: text
             where: &textWhere
-                ref: 
-                  - main_pinky_bottom
-                shift: [-9, -9]
+                ref: main_inner_bottom
+                shift: [20, -10]
             params: &textParams
-                text: アボカド v0.2
+                text: アボカド v0.3
                 justify: left
         back_text:
             <<: *text
             where:
                 <<: *textWhere
-                shift: [9, -9]
+                shift: [20, -10]
             params:
                 <<: *textParams
                 layer: B.SilkS
-                justify: left mirror
+                justify: right mirror
         screws:
           what: mounting_hole
           params:
