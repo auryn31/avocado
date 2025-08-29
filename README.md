@@ -64,3 +64,26 @@ Just download the zip and push it onto your pro micro.
 - <a href="https://github.com/foostan/crkbd" target="_blank">Corne keyboard</a>
 - <a href="https://github.com/zmkfirmware/zmk" target="_blank">ZMK</a>
 - <a href="https://github.com/manna-harbour/miryoku_zmk" target="_blank">Miryoku ZMK</a>
+
+## Local build
+
+```sh
+# One time setup
+git clone https://github.com/zmkfirmware/zmk.git
+npm install -g @devcontainers/cli
+
+docker volume create --driver local -o o=bind -o type=none \\n  -o device="/Users/auryn/coding/avocado/config" zmk-config
+docker volume create --driver local -o o=bind -o type=none \\n  -o device="/Users/auryn/coding/avocado/zephyr" zmk-modules
+devcontainer up --workspace-folder "/Users/auryn/coding/zmk"
+
+docker exec -w /workspaces/zmk -it a29e880249f3 /bin/bash
+
+cd app
+west update
+west config build.cmake-args -- "-DSHIELD=avocado_left -DZMK_CONFIG=/workspaces/zmk-config"
+west config build.cmake-args -- "-DSHIELD=avocado_right -DZMK_CONFIG=/workspaces/zmk-config"
+
+# One or the other
+west build -p -b nice_nano_v2 -- -DSHIELD=avocado_left
+# west build -p -b seeeduino_xiao_ble -- -DSHIELD=avocado_left
+```

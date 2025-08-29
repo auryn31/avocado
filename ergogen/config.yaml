@@ -4,8 +4,8 @@ meta:
   author: auryn
 
 units: 
-  kx: cx + 2 
-  ky: cy + 2
+  kx: cx
+  ky: cy + 1
   sky: 0.5ky
   skx: 0.5kx
   kcow: 14
@@ -16,51 +16,51 @@ points:
     zones:
         main:
             rows:
-                bottom.row_net: D0
+                bottom.row_net: D6
                 home.row_net: D1
-                top.row_net: D2
+                top.row_net: D0
             columns:
                 pinky:
                     key:
-                        col_net: D3
+                        col_net: D2
                         spread: kx
                 ring:
                     key:
-                        col_net: D4
+                        col_net: D3
                         stagger: 0.4 ky
                         spread: kx
                 middle:
                     key:
-                        col_net: D5
+                        col_net: D4
                         stagger: 0.28 ky
                         spread: kx
                 index:
                     key:
-                        col_net: D6
+                        col_net: D5
                         stagger: -0.33 ky
                         spread: kx
                 inner:
                     key:
-                        col_net: D7
+                        col_net: D8
                         stagger: -0.11 ky 
                         spread: kx
         thumb:
             anchor:
                 ref: main_inner_bottom
                 shift: [-0.5 kx, -1.15 ky]
-            rows.home.row_net: D8
+            rows.home.row_net: D7
             columns:
                 inner.key:
                     origin: [-1 kx, -1.15 ky]
-                    col_net: D5 
+                    col_net: D4 
                     spread: kx
                 home.key:
-                    col_net: D6
+                    col_net: D5
                     spread: 1.1 kx
                     splay: -0.5 ky
                     origin: [-0.5 kx, -0.15 ky]
                 outer.key:
-                    col_net: D7
+                    col_net: D8
                     spread: 1.1 kx
                     splay: -0.5 ky 
                     origin: [-0.52 ky, -0.2 kx]
@@ -69,6 +69,18 @@ points:
             ref.aggregate.parts:
               [main_pinky_top]
             shift: [-skx, sky]
+          columns.screw.key.tags: [screw]
+        mountscrew_middle_left:
+          anchor:
+            ref.aggregate.parts:
+              [main_middle_top]
+            shift: [-sky, sky]
+          columns.screw.key.tags: [screw]
+        mountscrew_middle_right:
+          anchor:
+            ref.aggregate.parts:
+              [main_middle_top]
+            shift: [sky, sky]
           columns.screw.key.tags: [screw]
         mountscrew_bottom_left:
           anchor:
@@ -211,10 +223,10 @@ outlines:
                 -   ref: main_inner_top
                     shift: [0.6kx, -0.07ky]
                 -   ref: main_inner_top
-                    shift: [1.8kx, -0.07ky]
+                    shift: [2kx, -0.07ky]
 
                 -   ref: main_inner_bottom
-                    shift: [1.8kx, -0.9ky]
+                    shift: [2kx, -0.9ky]
     _keycap_outlines:
           - what: outline
             name: _base
@@ -267,71 +279,6 @@ cases.avocado:
         extrude: 6
         operation: add
 pcbs:
-  switch_plate:
-    outlines:
-      main.outline: _switch_plate
-    footprints:
-      # INFO: No need for screws, also they block the trackpoint
-      # screws:
-      #   what: mounting_hole
-      #   params:
-      #     drill: 4.3
-      #     outline: 0.4
-      #   where: [screw]
-      front_text: &text
-          what: text
-          where: &textWhere
-              ref: 
-                - main_index_bottom
-              shift: [-7, -0.5 kx]
-          params: &textParams
-              text: スイッチプレート
-              justify: left
-      back_text:
-          <<: *text
-          where:
-              <<: *textWhere
-              shift: [7, -0.5 kx]
-          params:
-              <<: *textParams
-              layer: B.SilkS
-              justify: left mirror
-      
-  bottom_case:
-    outlines:
-      main.outline: _board_outline
-    footprints:
-      screws:
-        what: mounting_hole
-        params:
-          drill: 1.8
-        where: [screw]
-      front_text: &text
-          what: text
-          where: &textWhere
-              ref: 
-                - main_pinky_bottom
-              shift: [-7, -0.4 cx]
-          params: &textParams
-              text: アボカド v0.3\nA keyboard for Auryn
-              justify: left
-      back_text:
-          <<: *text
-          where:
-              <<: *textWhere
-              shift: [7, -0.4 cx]
-          params:
-              <<: *textParams
-              layer: B.SilkS
-              justify: left mirror
-      avocado_image:
-         where:
-           ref: main_index_top
-           shift: [-12, -4]
-         params:
-           scale: 0.05
-         what: avocado
-      
   keyboard_pcb:
     outlines:
         main.outline: _board_outline
@@ -382,8 +329,8 @@ pcbs:
             label_at_bottom: true
             space: 1.25
           where:
-            ref: main_inner_home
-            shift: [kx, -0.3ky]
+            ref: main_inner_bottom
+            shift: [1.7kx, -0.7ky]
             rotate: 0
         on_off_switch:
             what: pcm12
@@ -395,11 +342,23 @@ pcbs:
             params:
                 from: pos
                 to: B+
+
+        enc_diode:
+            what: sod-123w
+            where:
+              ref: main_inner_bottom
+              shift: [23, 0]
+            params:
+                from: D6
+                to: D6
+            adjust:
+                shift: [ -18, -3.6 ]
+                rotate: -90
         enc_wheel:
           what: rotary
           params:
-            from: ""
-            to: ""
+            from: D6
+            to: D3
             A: "D9"
             B: "D10"
             C: "GND"
@@ -407,6 +366,16 @@ pcbs:
             ref: main_inner_bottom
             shift: [23, 0]
             rotate: 270
+        vgn_text: 
+            what: text
+            where: 
+                ref: main_inner_home
+                shift: [0.85kx, -0.4ky]
+            params: &textParams
+                text: GO VEGAN
+                justify: left
+                v_size: 2
+                h_size: 2
         front_text: &text
             what: text
             where: &textWhere

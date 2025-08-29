@@ -3,7 +3,7 @@ id: avocado
 name: Avocado
 type: shield
 url: https://github.com/Narkoleptika/josukey/
-requires: [pro_micro]
+requires: [seeed_xiao]
 features:
     - keys
 siblings:
