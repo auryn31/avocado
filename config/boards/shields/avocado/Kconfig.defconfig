@@ -1,7 +1,7 @@
 if SHIELD_AVOCADO_RIGHT
 
 config ZMK_KEYBOARD_NAME
-    default "Tofu v0.2"
+    default "Avocado v0.3"
 
 config ZMK_SPLIT_ROLE_CENTRAL
     default y
