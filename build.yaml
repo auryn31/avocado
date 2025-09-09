@@ -1,5 +1,5 @@
 include:
-  - board: nice_nano_v2
+  - board: seeeduino_xiao_ble
     shield: avocado_right
-  - board: nice_nano_v2
+  - board: seeeduino_xiao_ble
     shield: avocado_left
