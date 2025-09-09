@@ -7,3 +7,8 @@
                 <&xiao_d 5 GPIO_ACTIVE_HIGH>,
                 <&xiao_d 8 GPIO_ACTIVE_HIGH>;
 };
+
+&left_encoder {
+    status = "okay";
+};
+
