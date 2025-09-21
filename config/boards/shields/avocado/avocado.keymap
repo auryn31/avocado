@@ -46,9 +46,10 @@
                             &kp A       &lt MED ESC &lt NAV SPACE   &kp TAB     &lt SYM RET &lt NUM BSPC    &lt FUN DEL &kp B
             >;
 
-         sensor-bindings =
-                <&rot_kp C D>,
-                <&rot_kp A B>;
+         // sensor-bindings =
+         //        <&rot_kp C D>,
+         //        <&rot_kp A B>;
+          sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
         nav_layer {
