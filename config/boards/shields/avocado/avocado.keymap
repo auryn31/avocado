@@ -38,12 +38,12 @@
     &kp Q       &kp W       &kp E       &kp R       &kp T                                   &kp Y           &kp U       &kp I       &kp O           &kp P
     &hm LGUI A  &hm LALT S  &hm LCTRL D &hm LSHFT F &kp G                                   &kp H           &hm LSHFT J &hm LCTRL K &hm LALT L      &hm LGUI SEMI
     &kp Z       &hm RALT X  &kp C       &kp V       &kp B                                   &kp N           &kp M       &kp COMMA   &hm RALT DOT    &kp FSLH
-                            &kp A       &lt MED ESC &lt NAV SPACE   &kp TAB     &lt SYM RET &lt NUM BSPC    &lt FUN DEL &kp A 
+                            &kp A       &lt MED ESC &lt NAV SPACE   &kp TAB     &lt SYM RET &lt NUM BSPC    &lt FUN DEL &kp B
             >;
 
          sensor-bindings =
-                <&inc_dec_kp C_VOL_UP C_VOLUME_DOWN>,
-                <&inc_dec_kp PAGE_UP PAGE_DOWN>;
+                <&inc_dec_kp C D>,
+                <&inc_dec_kp A B>;
         };
 
         nav_layer {
