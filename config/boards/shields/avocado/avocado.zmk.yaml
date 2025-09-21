@@ -6,6 +6,7 @@ url: https://github.com/Narkoleptika/josukey/
 requires: [seeed_xiao]
 features:
     - keys
+    - encoder
 siblings:
     - avocado_left
     - avocado_right
