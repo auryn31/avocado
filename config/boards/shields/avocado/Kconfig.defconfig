@@ -13,6 +13,11 @@ endif
 
 if SHIELD_AVOCADO_LEFT || SHIELD_AVOCADO_RIGHT
 
+config CONFIG_EC11
+  default y
+config CONFIG_EC11_TRIGGER_GLOBAL_THREAD
+  default y
+
 config ZMK_SPLIT
     default y
 
