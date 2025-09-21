@@ -26,6 +26,11 @@
             tapping-term-ms = <150>;
             quick-tap-ms = <0>;
             flavor = "tap-preferred";
+            // bindings = <&kp>, <&kp>;
+        };
+      rot_kp: sensor_rotate_kp {
+            compatible = "zmk,behavior-sensor-rotate-var";
+            #sensor-binding-cells = <2>;
             bindings = <&kp>, <&kp>;
         };
     };
@@ -42,8 +47,8 @@
             >;
 
          sensor-bindings =
-                <&inc_dec_kp C D>,
-                <&inc_dec_kp A B>;
+                <&rot_kp C D>,
+                <&rot_kp A B>;
         };
 
         nav_layer {
