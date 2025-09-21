@@ -87,3 +87,7 @@ west config build.cmake-args -- "-DSHIELD=avocado_right -DZMK_CONFIG=/workspaces
 west build -p -b nice_nano_v2 -- -DSHIELD=avocado_left
 # west build -p -b seeeduino_xiao_ble -- -DSHIELD=avocado_left
 ```
+
+## Resources
+
+- goose keyboard: https://github.com/Pipshag/goosekb/blob/master/config/goose.keymap

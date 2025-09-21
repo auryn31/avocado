@@ -1,5 +1,6 @@
 include:
   - board: seeeduino_xiao_ble
     shield: avocado_right
+    snippet: zmk-usb-logging
   - board: seeeduino_xiao_ble
     shield: avocado_left
